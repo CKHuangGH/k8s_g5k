@@ -1,5 +1,5 @@
 import subprocess
-from enoslib.api import discover_networks, generate_inventory,run_ansible
+from enoslib.api import generate_inventory,run_ansible
 from enoslib.infra.enos_vmong5k.provider import VMonG5k
 from enoslib.infra.enos_vmong5k.configuration import Configuration
 
@@ -8,7 +8,7 @@ import time
 
 name = "kubefed-"
 
-clusters = ["parapluie", "parapluie","ecotype", "chiclet"]
+clusters = ["paravance", "paravance"]
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -25,16 +25,15 @@ for i in range(0, len(clusters)):
     
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
-                                       image="/grid5000/virt-images/debian9-x64-base.qcow2")\
+                                       image="/grid5000/virt-images/ubuntu2004-x64-min.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 2, "mem": 4096},
-                                     number=6)\
+                                     number=2)\
                         .finalize()
     provider = VMonG5k(conf)
 
     roles, networks = provider.init()
-    roles = discover_networks(roles, networks)
 
     inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
 
@@ -56,4 +55,4 @@ print(master_nodes)
 subprocess.check_call("./modify_kube_config.sh %s %s %s %s" % (str(master_nodes[0]), str(master_nodes[1]), str(master_nodes[2]), str(master_nodes[3])), shell=True)
 
 # Setup Kubernetes Federation with Cluster 0 as the host cluster and the remaining clusters as members of the federation
-run_ansible(["kubefed_init.yml"], inventory_path="kubefed_inventory_cluster0.ini")
+#run_ansible(["kubefed_init.yml"], inventory_path="kubefed_inventory_cluster0.ini")
