@@ -10,7 +10,7 @@ name = "kubefed-"
 
 clusters = ["paravance", "paravance"]
 
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
 
 master_nodes = []
 
@@ -52,7 +52,7 @@ print("Master nodes ........")
 print(master_nodes)
 
 # Modify k8s conctext configurations to give them unique names
-subprocess.check_call("./modify_kube_config.sh %s %s %s %s" % (str(master_nodes[0]), str(master_nodes[1]), str(master_nodes[2]), str(master_nodes[3])), shell=True)
+#subprocess.check_call("./modify_kube_config.sh %s %s %s %s" % (str(master_nodes[0]), str(master_nodes[1]), str(master_nodes[2]), str(master_nodes[3])), shell=True)
 
 # Setup Kubernetes Federation with Cluster 0 as the host cluster and the remaining clusters as members of the federation
 #run_ansible(["kubefed_init.yml"], inventory_path="kubefed_inventory_cluster0.ini")

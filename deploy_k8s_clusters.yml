@@ -31,8 +31,8 @@
 
   - name: install remote apt deps
     apt:
-     name: "{{ item }}"
-     state: present
+      name: "{{ item }}"
+      state: present
     with_items:
      - apt-transport-https
      - ca-certificates
@@ -41,21 +41,27 @@
 
   - name: add Docker apt-key
     apt_key:
-     url: https://download.docker.com/linux/debian/gpg
+     url: https://download.docker.com/linux/ubuntu/gpg
      state: present
 
   - name: add Docker's APT repository
     apt_repository:
-     repo: deb https://download.docker.com/linux/debian stretch stable
+     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
      state: present
      filename: 'docker'
 
   - name: install Docker
     apt:
-     name: docker-ce
+     name: docker-ce docker-ce-cli containerd.io
      state: present
      update_cache: true
 
+  - name: append more key/values
+    set_fact:
+      docker_vars: "{{ docker_vars | default([]) | combine({ item.key : item.value }) }}"
+    with_items:
+    - { key: "exec-opts", value: [“native.cgroupdriver=systemd”] }
+    
   - name: add Kubernetes apt-key
     apt_key:
      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
