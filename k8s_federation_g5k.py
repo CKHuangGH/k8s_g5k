@@ -8,7 +8,7 @@ import time
 
 name = "kubefed-"
 
-clusters = ["paravance", "paravance"]
+clusters = ["parasilo", "parasilo"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
