@@ -6,7 +6,7 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "kubefed-"
+name = "kube-"
 
 clusters = ["paravance", "paravance"]
 
@@ -28,7 +28,7 @@ for i in range(0, len(clusters)):
                                        image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
-                                     flavour_desc={"core": 2, "mem": 4096},
+                                     flavour_desc={"core": 4, "mem": 8192},
                                      number=2)\
                         .finalize()
     provider = VMonG5k(conf)
