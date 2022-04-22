@@ -48,7 +48,8 @@ for i in range(0, len(clusters)):
     run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
 
     # Deploy k8s and dependencies
-    run_ansible(["deploy_k8s.yml"], inventory_path=inventory_file)
+    
+    #run_ansible(["deploy_k8s.yml"], inventory_path=inventory_file)
 
 
 
