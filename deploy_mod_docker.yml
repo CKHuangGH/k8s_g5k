@@ -4,10 +4,11 @@
   vars:
   
   tasks:
-  - name: Check that the /etc/docker/daemon.json exists
-    stat:
-      path: /etc/docker/daemon.json
-    register: stat_result
+  - name: Creating an empty file
+    file:
+      path: "/etc/docker/daemon.json"
+      state: touch
+      mode: 0755
   
   - name: load var from file
     slurp:
