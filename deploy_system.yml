@@ -43,12 +43,12 @@
 
   - name: add Docker apt-key
     apt_key:
-     url: https://download.docker.com/linux/debian/gpg
+     url: https://download.docker.com/linux/ubuntu/gpg
      state: present
 
   - name: add Docker's APT repository
     apt_repository:
-     repo: deb https://download.docker.com/linux/debian stretch stable
+     repo: deb https://download.docker.com/linux/ubuntu stable
      state: present
      filename: 'docker'
 
