@@ -1,12 +1,12 @@
 import subprocess
-from enoslib.api import generate_inventory,run_ansible
+from enoslib.api import discover_networks, generate_inventory,run_ansible
 from enoslib.infra.enos_vmong5k.provider import VMonG5k
 from enoslib.infra.enos_vmong5k.configuration import Configuration
 
 import logging
 import time
 
-name = "kube-"
+name = "kube2-"
 
 clusters = ["paravance", "paravance"]
 
@@ -34,6 +34,8 @@ for i in range(0, len(clusters)):
     provider = VMonG5k(conf)
 
     roles, networks = provider.init()
+
+    roles = discover_networks(roles, networks)
 
     inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
 
