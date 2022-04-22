@@ -1,23 +1,38 @@
 #!/bin/bash 
 
-KUBECONFIG=~/.kube/cluster0:~/.kube/cluster1:~/.kube/cluster2:~/.kube/cluster3:~/.kube/cluster4:~/.kube/cluster5 kubectl config view --flatten > ~/.kube/config
+for i in {0..1}
+do
+    string=$string"/root/.kube/cluster$i:"
+done
+string=$string | sed "s/.$//g"
+KUBECONFIG=$string kubectl config view --flatten > ~/.kube/config
 
-for i in {0..5}
+for i in {0..1}
 do
 kubectl config rename-context k8s-admin-cluster$i@kubernetes cluster$i
 done
 
 # Install helm3
-wget --tries=0 https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz
-tar xzvf helm-v3.0.2-linux-amd64.tar.gz
+wget --tries=0 https://github.com/helm/helm/releases/download/v3.8.2/helm-v3.8.2-linux-amd64.tar.gz.asc
+tar xzvf helm-v3.8.2-linux-amd64.tar.gz.asc
 mv linux-amd64/helm /usr/local/bin/
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add stable https://charts.helm.sh/stable
+helm repo add cilium https://helm.cilium.io/
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
-# Deploy Prometheus
-for i in {0..5}
+# Deploy cilium
+for i in {0..1}
 do
-kubectl config use-context cluster$i; kubectl create ns monitoring; helm install stable/prometheus-operator --generate-name --set grafana.service.type=NodePort --set prometheus.service.type=NodePort --set prometheus.prometheusSpec.scrapeInterval="5s" --namespace monitoring; kubectl config use-context cluster0
+kubectl config use-context cluster$i
+helm repo update
+helm install cilium cilium/cilium --version 1.11.3 --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i --wait
+done
+
+# Deploy Prometheus
+for i in {0..1}
+do
+helm install --version 33.1.0 prometheus-community/kube-prometheus-stack --generate-name --set grafana.service.type=NodePort --set grafana.service.nodePort=30099 --set prometheus.service.type=NodePort --set prometheus.prometheusSpec.scrapeInterval="5s" --namespace monitoring
 done
 
 #Install helm2

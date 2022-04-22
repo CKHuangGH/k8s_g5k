@@ -36,10 +36,10 @@
     with_items:
      - apt-transport-https
      - ca-certificates
-     - gnupg2
+     - gnupg
      - curl
      - vim
-     - software-properties-common
+     - software-properties-common  
 
   - name: add Docker apt-key
     apt_key:
@@ -55,6 +55,18 @@
   - name: install Docker
     apt:
      name: docker-ce
+     state: present
+     update_cache: true
+
+  - name: install docker-ce-cli
+    apt:
+     name: docker-ce-cli
+     state: present
+     update_cache: true
+
+  - name: install containerd.io
+    apt:
+     name: containerd.io
      state: present
      update_cache: true
 
@@ -120,7 +132,7 @@
         dest: /root/.kube/config
         remote_src: yes
         owner: root
-        
+
 - hosts: all[0]
   become: yes
   gather_facts: false
