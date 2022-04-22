@@ -15,16 +15,9 @@
       src: /etc/docker/daemon.json
     register: docker_vars
 
-  - debug:
-      msg: "{{ docker_vars.content|b64decode|from_json }}"
-
   - name: append more key/values
     set_fact:
-      docker_vars: "{{ docker_vars.content|b64decode|from_json }}"
-
-  - name: append more key/values
-    set_fact:
-      docker_vars: "{{ docker_vars | default([]) | combine({ item.key : item.value }) }}"
+      docker_vars: "{{combine({ item.key : item.value }) }}"
     with_items:
     - { key: "exec-opts", value: [ "native.cgroupdriver=systemd" ] }
     - { key: "registry-mirrors", value: [ "http://docker-cache.grid5000.fr" ] }
