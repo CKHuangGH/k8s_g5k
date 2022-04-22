@@ -22,14 +22,12 @@
       set_fact:
         docker_vars: "{{ docker_vars.content|b64decode|from_json }}"
 
-
     - name: append more key/values
       set_fact:
         docker_vars: "{{ docker_vars | default([]) | combine({ item.key : item.value }) }}"
       with_items:
-      - { key: "log-driver", value: "journald" }
+      - { key: "exec-opts", value: [ "native.cgroupdriver=systemd" ] }
       - { key: "registry-mirrors", value: [ "http://docker-cache.grid5000.fr" ] }
-
 
     - debug:
         var: docker_vars
