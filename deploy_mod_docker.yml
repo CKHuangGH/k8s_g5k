@@ -1,0 +1,41 @@
+- hosts: all
+  become: yes
+  gather_facts: false
+  vars:
+  
+  tasks:
+  - name: Check that the /etc/docker/daemon.json exists
+    stat:
+      path: /etc/docker/daemon.json
+    register: stat_result
+
+  - block:
+    - name: load var from file
+      slurp:
+        src: /etc/docker/daemon.json
+      register: docker_vars
+
+    - debug:
+        msg: "{{ docker_vars.content|b64decode|from_json }}"
+
+    - name: append more key/values
+      set_fact:
+        docker_vars: "{{ docker_vars.content|b64decode|from_json }}"
+
+
+    - name: append more key/values
+      set_fact:
+        docker_vars: "{{ docker_vars | default([]) | combine({ item.key : item.value }) }}"
+      with_items:
+      - { key: "log-driver", value: "journald" }
+      - { key: "registry-mirrors", value: [ "http://docker-cache.grid5000.fr" ] }
+
+
+    - debug:
+        var: docker_vars
+
+    - name: write var to file
+      copy:
+        content: "{{ docker_vars | to_nice_json }}"
+        dest: /etc/docker/daemon.json
+    when: stat_result.stat.exists == true
