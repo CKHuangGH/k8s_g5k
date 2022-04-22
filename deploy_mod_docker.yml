@@ -10,9 +10,14 @@
       state: touch
       mode: 0755
 
+  - name: load var from file
+    slurp:
+      src: /etc/docker/daemon.json
+    register: docker_vars
+
   - name: append more key/values
     set_fact:
-      docker_vars: "{{combine({ item.key : item.value })}}"
+      docker_vars: "{{ docker_vars | combine({ item.key : item.value })}}"
     with_items:
     - { key: "exec-opts", value: [ "native.cgroupdriver=systemd" ] }
     - { key: "registry-mirrors", value: [ "http://docker-cache.grid5000.fr" ] }
