@@ -37,44 +37,34 @@
      - apt-transport-https
      - ca-certificates
      - gnupg2
+     - curl
+     - vim
      - software-properties-common
 
   - name: add Docker apt-key
     apt_key:
-     url: https://download.docker.com/linux/ubuntu/gpg
+     url: https://download.docker.com/linux/debian/gpg
      state: present
 
   - name: add Docker's APT repository
     apt_repository:
-     repo: deb https://download.docker.com/linux/ubuntu focal stable
+     repo: deb https://download.docker.com/linux/debian stretch stable
      state: present
      filename: 'docker'
 
-  - name: install docker-ce
+  - name: install Docker
     apt:
      name: docker-ce
      state: present
      update_cache: true
 
-  - name: install containerd.io
-    apt:
-     name: containerd.io
-     state: present
-     update_cache: true
-
-  - name: install docker-ce-cli
-    apt:
-     name: docker-ce-cli
-     state: present
-     update_cache: true
-
-  - name: Copy from Local to Remote Target Machine with 'copy'
+  - name: Copy daemon.json from Local to all node
     copy:
       src: daemon.json
       dest: /etc/docker/daemon.json
       backup: yes
 
-  - name: restart service cron on centos, in all cases, also issue daemon-reload to pick up config changes
+  - name: restart service docker
     systemd:
       state: restarted
       daemon_reload: yes
@@ -93,13 +83,13 @@
 
   - name: install kubelet
     apt:
-     name: kubelet=1.23.3-00
+     name: kubelet=1.23.6
      state: present
      update_cache: true
 
   - name: install kubeadm
     apt:
-     name: kubeadm=1.23.3-00
+     name: kubeadm=1.23.6
      state: present
 
 - hosts: all[0]
@@ -107,6 +97,6 @@
   tasks:
    - name: install kubectl
      apt:
-       name: kubectl=1.23.0-00
+       name: kubectl=1.23.6
        state: present
        force: yes

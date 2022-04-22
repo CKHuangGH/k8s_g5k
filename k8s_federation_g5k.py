@@ -25,7 +25,7 @@ for i in range(0, len(clusters)):
     
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
-                                       image="/grid5000/virt-images/ubuntu2004-x64-min.qcow2")\
+                                       image="/grid5000/virt-images/debian11-x64-base.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 2, "mem": 4096},
@@ -46,9 +46,6 @@ for i in range(0, len(clusters)):
 
     # Deploy k8s and dependencies
     run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
-
-    # Deploy k8s and dependencies
-    run_ansible(["deploy_mod_docker.yml"], inventory_path=inventory_file)
 
     # Deploy k8s and dependencies
     run_ansible(["deploy_k8s.yml"], inventory_path=inventory_file)
