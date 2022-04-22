@@ -68,6 +68,18 @@
      state: present
      update_cache: true
 
+  - name: Copy from Local to Remote Target Machine with 'copy'
+    copy:
+      src: daemon.json
+      dest: /etc/docker/daemon.json
+      backup: yes
+
+  - name: restart service cron on centos, in all cases, also issue daemon-reload to pick up config changes
+    systemd:
+      state: restarted
+      daemon_reload: yes
+      name: docker
+
   - name: add Kubernetes apt-key
     apt_key:
      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
