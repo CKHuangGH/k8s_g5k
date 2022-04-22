@@ -36,10 +36,9 @@
     with_items:
      - apt-transport-https
      - ca-certificates
-     - gnupg
+     - gnupg2
      - curl
-     - vim
-     - software-properties-common  
+     - software-properties-common
 
   - name: add Docker apt-key
     apt_key:
