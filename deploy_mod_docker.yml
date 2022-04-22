@@ -9,11 +9,6 @@
       path: "/etc/docker/daemon.json"
       state: touch
       mode: 0755
-  
-  - name: load var from file
-    slurp:
-      src: /etc/docker/daemon.json
-    register: docker_vars
 
   - name: append more key/values
     set_fact:
