@@ -6,9 +6,9 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "kube2-"
+name = "master"
 
-clusters = ["paravance", "paravance"]
+clusters = ["paravance"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
@@ -28,7 +28,7 @@ for i in range(0, len(clusters)):
                                        image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
-                                     flavour_desc={"core": 4, "mem": 8192},
+                                     flavour_desc={"core": 2, "mem": 4096},
                                      number=2)\
                         .finalize()
     provider = VMonG5k(conf)
@@ -45,24 +45,14 @@ for i in range(0, len(clusters)):
 
     # Make sure k8s is not already running
     #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-    time.sleep(10)
+    time.sleep(15)
     # Deploy k8s and dependencies
     run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
 
-    # Deploy k8s and dependencies
-    
-    #run_ansible(["deploy_k8s.yml"], inventory_path=inventory_file)
-
-
-
-# Master nodes of each cluster
-
-
-# Modify k8s conctext configurations to give them unique names
-subprocess.check_call("./modify_kube_config.sh %s %s" % (str(master_nodes[0]), str(master_nodes[1])), shell=True)
-
-# Setup Kubernetes Federation with Cluster 0 as the host cluster and the remaining clusters as members of the federation
-#run_ansible(["kubefed_init.yml"], inventory_path="kubefed_inventory_cluster0.ini")
+f = open("node_list", 'w')
+f.write(master_nodes)
+f.write("\n")
+f.close
 
 print("Master nodes ........")
 print(master_nodes)
