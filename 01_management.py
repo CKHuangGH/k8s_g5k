@@ -48,7 +48,7 @@ for i in range(0, len(clusters)):
     run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
 
 f = open("node_list", 'w')
-f.write(master_nodes)
+f.write(str(master_nodes[0]))
 f.write("\n")
 f.close
 
