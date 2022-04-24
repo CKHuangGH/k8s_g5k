@@ -6,7 +6,7 @@ git clone https://github.com/CKHuangGH/rntsm.git
 scp -r /home/chuang/k8s_g5k/mck8s_vm root@$manage:/root/
 scp -r /home/chuang/k8s_g5k/rntsm root@$manage:/root/
 scp node_list root@$manage:/root/mck8s_vm
-rm -rf .ssh/known_hosts
+rm -rf /home/chuang/.ssh/known_hosts
 
 for j in $(cat node_list)
 do

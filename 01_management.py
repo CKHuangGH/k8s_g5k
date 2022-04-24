@@ -47,7 +47,7 @@ for i in range(0, len(clusters)):
     # Deploy k8s and dependencies
     run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
 
-f = open("node_list", 'w')
+f = open("node_list", 'a')
 f.write(str(master_nodes[0]))
 f.write("\n")
 f.close
