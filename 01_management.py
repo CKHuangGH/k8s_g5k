@@ -28,7 +28,7 @@ for i in range(0, len(clusters)):
                                        image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
-                                     flavour_desc={"core": 4, "mem": 8192},
+                                     flavour_desc={"core": 4, "mem": 16384},
                                      number=2)\
                         .finalize()
     provider = VMonG5k(conf)
