@@ -3,7 +3,7 @@ i=0
 manage=$(awk NR==1 node_list)
 #git clone https://github.com/CKHuangGH/mck8s_vm.git
 #git clone https://github.com/CKHuangGH/rntsm.git
-scp node_list root@$manage:/root/mck8s_vm
+scp node_list root@$manage:/root/mck8s_vm/node_list
 rm -rf /home/chuang/.ssh/known_hosts
 
 for j in $(cat node_list)
