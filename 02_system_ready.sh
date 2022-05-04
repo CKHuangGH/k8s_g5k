@@ -21,8 +21,10 @@ ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/06_deployment.s
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/createvalue.sh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/01_status.sh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/02_run.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/03_cptorennes.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/03_getdocker.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/04_cptorennes.sh
 i=$((i+1))
 done
+scp /home/chuang/.ssh/id_rsa root@10.158.0.3:/root/.ssh
 scp node_list root@$manage:/root/mck8s_vm/node_list
 echo "management node is $manage"
