@@ -6,7 +6,7 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "member"
+name = "master"
 
 clusters = ["paravance"]
 
@@ -28,29 +28,8 @@ for i in range(0, len(clusters)):
                                        image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
-                                     flavour_desc={"core": 2, "mem": 8192},
-                                     number=16)\
+                                     flavour_desc={"core": 4, "mem": 16384},
+                                     number=2)\
                         .finalize()
     provider = VMonG5k(conf)
-
-    roles, networks = provider.init()
-
-    inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
-
-    inventory = generate_inventory(roles, networks, inventory_file)
-
-    master_nodes.append(roles[role_name][0].address)
-
-    # Make sure k8s is not already running
-    #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-    time.sleep(15)
-    # Deploy k8s and dependencies
-    run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
-
-f = open("node_list", 'a')
-f.write(str(master_nodes[0]))
-f.write("\n")
-f.close
-
-print("Master nodes ........")
-print(master_nodes)
+    provider.destroy()
