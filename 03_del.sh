@@ -1,2 +1,2 @@
-python3 management2.py
-python3 member2.py
+python3 delmanagement.py
+python3 delmember.py
