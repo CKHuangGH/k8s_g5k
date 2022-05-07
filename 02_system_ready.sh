@@ -30,5 +30,6 @@ i=$((i+1))
 done
 scp /home/chuang/.ssh/id_rsa root@10.158.0.3:/root/.ssh
 scp -r /home/chuang/k8s_g5k/mck8s_vm root@10.158.0.3:/root/
+scp -r /home/chuang/k8s_g5k/rntsm root@10.158.0.3:/root/
 scp node_list root@$manage:/root/mck8s_vm/node_list
 echo "management node is $manage"
