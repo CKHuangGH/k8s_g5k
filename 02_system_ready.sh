@@ -10,6 +10,7 @@ do
 scp -r /home/chuang/k8s_g5k/mck8s_vm root@$j:/root/
 scp -r /home/chuang/k8s_g5k/rntsm root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
+ssh -o StrictHostKeyChecking=no root@$j sudo apt-get install vim -y
 #ssh -o StrictHostKeyChecking=no root@$j mv /root/.kube/config /root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/01_combineAll.sh
@@ -23,6 +24,8 @@ ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/01_stat
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/02_run.sh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/03_getdocker.sh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/04_cptorennes.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/rntsm/management/build.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/rntsm/member/build.sh
 i=$((i+1))
 done
 scp /home/chuang/.ssh/id_rsa root@10.158.0.3:/root/.ssh
