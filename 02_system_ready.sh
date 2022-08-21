@@ -17,6 +17,7 @@ ssh -o StrictHostKeyChecking=no root@$j sudo git clone https://github.com/CKHuan
 ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install pandas
 #ssh -o StrictHostKeyChecking=no root@$j mv /root/.kube/config /root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/00_forerror.sh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/01_combineAll.sh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/02_acalavalue.sh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/03_createmember.sh
