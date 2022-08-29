@@ -15,6 +15,8 @@ ssh -o StrictHostKeyChecking=no root@$j sudo apt install python3-pip -y
 ssh -o StrictHostKeyChecking=no root@$j sudo git clone https://github.com/CKHuangGH/acala_error.git
 ssh -o StrictHostKeyChecking=no root@$j sudo git clone https://github.com/CKHuangGH/k8s_google_injection.git
 ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install pandas
+ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install kubernetes
+ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install aiohttp
 #ssh -o StrictHostKeyChecking=no root@$j mv /root/.kube/config /root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/00_forerror.sh
