@@ -14,7 +14,7 @@ clusters = ["paravance"]
 
 master_nodes = []
 
-duration = "04:00:00"
+duration = "05:00:00"
 
 
 for i in range(0, len(clusters)):
