@@ -6,15 +6,15 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "member"
+name = "m1"
 
-clusters = ["paravance","paravance","paravance"]
+clusters = ["paravance"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
 master_nodes = []
 
-duration = "05:00:00"
+duration = "04:00:00"
 
 
 for i in range(0, len(clusters)):
@@ -32,24 +32,4 @@ for i in range(0, len(clusters)):
                                      number=6)\
                         .finalize()
     provider = VMonG5k(conf)
-
-    roles, networks = provider.init()
-
-    inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
-
-    inventory = generate_inventory(roles, networks, inventory_file)
-
-    master_nodes.append(roles[role_name][0].address)
-
-    # Make sure k8s is not already running
-    #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-    time.sleep(30)
-    # Deploy k8s and dependencies
-    run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
-    f = open("node_list", 'a')
-    f.write(str(master_nodes[i]))
-    f.write("\n")
-    f.close
-    print("Master nodes ........")
-    print(master_nodes)
-    time.sleep(10)
+    provider.destroy()

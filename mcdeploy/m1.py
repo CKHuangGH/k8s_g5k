@@ -6,9 +6,9 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "member"
+name = "m1"
 
-clusters = ["paravance","paravance","paravance"]
+clusters = ["paravance"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
@@ -46,10 +46,10 @@ for i in range(0, len(clusters)):
     time.sleep(30)
     # Deploy k8s and dependencies
     run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
-    f = open("node_list", 'a')
-    f.write(str(master_nodes[i]))
-    f.write("\n")
-    f.close
-    print("Master nodes ........")
-    print(master_nodes)
-    time.sleep(10)
+    
+f = open("node_list", 'a')
+f.write(str(master_nodes[0]))
+f.write("\n")
+f.close
+print("Master nodes ........")
+print(master_nodes)
