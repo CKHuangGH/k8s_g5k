@@ -14,7 +14,7 @@ clusters = ["paravance"]
 
 master_nodes = []
 
-duration = "04:00:00"
+duration = "05:00:00"
 
 
 for i in range(0, len(clusters)):
@@ -46,9 +46,10 @@ for i in range(0, len(clusters)):
     time.sleep(30)
     # Deploy k8s and dependencies
     run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
-    f = open("node_list", 'a')
-    f.write(str(master_nodes[0]))
-    f.write("\n")
-    f.close
-    print("Master nodes ........")
-    print(master_nodes)
+    
+f = open("node_list", 'a')
+f.write(str(master_nodes[0]))
+f.write("\n")
+f.close
+print("Master nodes ........")
+print(master_nodes)
