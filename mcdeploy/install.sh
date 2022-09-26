@@ -3,3 +3,4 @@ sudo apt install python3-pip -y
 sudo pip3 install pandas
 sudo pip3 install kubernetes
 sudo pip3 install aiohttp
+sudo pip3 install prometheus_api_client
