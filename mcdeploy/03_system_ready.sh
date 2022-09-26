@@ -16,7 +16,7 @@ scp -r ./k8s_google_injection root@$j:/root/
 scp -r ./acala_error root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 ./install.sh
-ssh -o StrictHostKeyChecking=no root@$j sh ./install.sh
+ssh -o StrictHostKeyChecking=no root@$j sh ./install.sh &
 # ssh -o StrictHostKeyChecking=no root@$j sudo apt-get install vim -y
 # ssh -o StrictHostKeyChecking=no root@$j sudo apt install python3-pip -y
 # ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install pandas
