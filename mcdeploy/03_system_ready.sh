@@ -40,12 +40,13 @@ done
 while read line
 do 
 echo $line
-i=$(echo $line | cut -d "." -f 2)
-j=$(echo $line | cut -d "." -f 3)
+ip1=$(echo $line | cut -d "." -f 2)
+ip2=$(echo $line | cut -d "." -f 3)
+break
 done < node_list
 
 
-scp /home/chuang/.ssh/id_rsa root@10.$i.$j.3:/root/.ssh
-scp -r ./mck8s_vm root@10.$i.$j.3:/root/
+scp /home/chuang/.ssh/id_rsa root@10.$ip1.$ip2.3:/root/.ssh
+scp -r ./mck8s_vm root@10.$ip1.$ip2.3:/root/
 scp node_list root@$manage:/root/mck8s_vm/mcdeploy/node_list
 echo "management node is $manage"
