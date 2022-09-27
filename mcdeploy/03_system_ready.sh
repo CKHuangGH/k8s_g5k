@@ -36,7 +36,16 @@ ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/mcdeploy/06_dep
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/mcdeploy/createvalue.sh
 i=$((i+1))
 done
-scp /home/chuang/.ssh/id_rsa root@10.158.0.3:/root/.ssh
-scp -r ./mck8s_vm root@10.158.0.3:/root/
+
+while read line
+do 
+echo $line
+i=$(echo $line | cut -d "." -f 2)
+j=$(echo $line | cut -d "." -f 3)
+done < node_list
+
+
+scp /home/chuang/.ssh/id_rsa root@10.$i.$j.3:/root/.ssh
+scp -r ./mck8s_vm root@10.$i.$j.3:/root/
 scp node_list root@$manage:/root/mck8s_vm/mcdeploy/node_list
 echo "management node is $manage"
