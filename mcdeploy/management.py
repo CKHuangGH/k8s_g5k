@@ -6,9 +6,17 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
+
+
 name = "master"
 
-clusters = ["paravance"]
+
+f = open('00_clustername.txt')
+for line in f.readlines():
+    cluster=line
+    print(line)
+f.close
+clusters = [cluster]
 
 #logging.basicConfig(level=logging.DEBUG)
 
