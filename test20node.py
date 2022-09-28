@@ -26,15 +26,36 @@ for i in range(0, len(clusters)):
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
                                        image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")\
-                        .add_machine(roles=[role_name],
-                                     cluster=clusters[i],
-                                     flavour_desc={"core": 2, "mem": 8192},
-                                     number=1,flavour_desc={"core": 1, "mem": 4096},number=19)\
+                        # .add_machine(roles=[role_name],
+                                     # cluster=clusters[i],
+                                     # flavour_desc={"core": 2, "mem": 8192},
+                                     # number=1)\
+                        .add_machine(roles=["role1"], cluster=clusters[i], nodes=1)\
                         .finalize()
     provider = VMonG5k(conf)
 
     roles, networks = provider.init()
-
+    n_vms = 1
+    virt_conf = (
+        en.VMonG5kConf.from_settings(image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")
+        .add_machine(
+            roles=["cp"],
+            number=n_vms,
+            undercloud=roles["role1"],
+            flavour_desc={"core": 2, "mem": 8192}
+            number=1
+            # alternative
+            # macs=list(islice(en.mac_range(subnet), n_vms))
+        .add_machine(
+            roles=["member"],
+            number=n_vms,
+            undercloud=roles["role1"],
+            flavour_desc={"core": 1, "mem": 4096}
+            number=19
+            # alternative
+            # macs=list(islice(en.mac_range(subnet), n_vms))
+        ).finalize()
+    )
     inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
 
     inventory = generate_inventory(roles, networks, inventory_file)
