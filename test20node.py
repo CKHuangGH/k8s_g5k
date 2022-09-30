@@ -45,7 +45,7 @@ provider = en.G5k(conf)
 roles, networks = provider.init()
 roles = en.sync_info(roles, networks)
 
-subnet = networks["my_subnet"][0]
+subnet = networks["my_subnet"]
 cp = 1
 w=20
 virt_conf = (
