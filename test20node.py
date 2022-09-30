@@ -16,46 +16,54 @@ master_nodes = []
 
 duration = "05:00:00"
 
-
+prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=SITE)
 for i in range(0, len(clusters)):
 
     name_job = name + clusters[i] + str(i)
 
     role_name = "cluster" + str(clusters[i])
     
-    conf = Configuration.from_settings(job_name=name_job,
-                                       walltime=duration,
-                                       image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")\
-                        # .add_machine(roles=[role_name],
-                                     # cluster=clusters[i],
-                                     # flavour_desc={"core": 2, "mem": 8192},
-                                     # number=1)\
-                        .add_machine(roles=["role1"], cluster=clusters[i], nodes=1)\
-                        .finalize()
-    provider = VMonG5k(conf)
-
+    conf = (
+        en.G5kConf.from_settings(job_type="allow_classic_ssh", job_name=job_name)
+        .add_network_conf(prod_network)
+        .add_network(
+            id="not_linked_to_any_machine", type="slash_22", roles=["my_subnet"], site=SITE
+        )
+        .add_machine(
+        roles=["role1"], cluster=i, nodes=1, primary_network=prod_network
+        )
+        .finalize()
+    )
+    provider = en.G5k(conf)
     roles, networks = provider.init()
-    n_vms = 1
+    roles = en.sync_info(roles, networks)
+    
+    subnet = networks["my_subnet"][0]
+    cp = 1
+    w=20
     virt_conf = (
         en.VMonG5kConf.from_settings(image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")
         .add_machine(
             roles=["cp"],
-            number=n_vms,
+            number=cp,
             undercloud=roles["role1"],
-            flavour_desc={"core": 2, "mem": 8192}
-            number=1
-            # alternative
-            # macs=list(islice(en.mac_range(subnet), n_vms))
+            flavour_desc={"core": 2, "mem": 8192},
+            macs=list(subnet.free_macs)[0:1]
         .add_machine(
             roles=["member"],
-            number=n_vms,
+            number=w,
             undercloud=roles["role1"],
-            flavour_desc={"core": 1, "mem": 4096}
-            number=19
-            # alternative
-            # macs=list(islice(en.mac_range(subnet), n_vms))
+            flavour_desc={"core": 1, "mem": 4096},
+            macs=list(subnet.free_macs)[0:1]
         ).finalize()
     )
+    
+    vmroles = en.start_virtualmachines(virt_conf)
+
+    print(vmroles)
+
+    print(networks)
+    
     inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
 
     inventory = generate_inventory(roles, networks, inventory_file)
