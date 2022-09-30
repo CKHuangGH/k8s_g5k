@@ -54,7 +54,7 @@ for i in range(0, len(clusters)):
             number=w,
             undercloud=roles["role1"],
             flavour_desc={"core": 1, "mem": 4096},
-            macs=list(subnet.free_macs)[0:1]
+        macs=list(subnet.free_macs)[1:w+1]
         ).finalize()
     )
     
