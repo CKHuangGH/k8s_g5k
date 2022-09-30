@@ -54,13 +54,13 @@ virt_conf = (
         number=cp,
         undercloud=roles["role1"],
         flavour_desc={"core": 2, "mem": 8192},
-        macs=list(subnet.free_macs)[0:1]
+        macs=list(islice(subnet[0].free_macs, cp))
     .add_machine(
         roles=["member"],
         number=w,
         undercloud=roles["role1"],
         flavour_desc={"core": 1, "mem": 4096},
-        macs=list(subnet.free_macs)[1:w+1]
+        macs=list(islice(subnet[0].free_macs, w))
     ).finalize()
 )
 )
@@ -71,7 +71,7 @@ print(vmroles)
 
 print(networks)
 
-inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
+inventory_file = "kubefed_inventory_cluster" + ".ini" 
 
 inventory = generate_inventory(roles, networks, inventory_file)
 
