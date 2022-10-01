@@ -6,7 +6,6 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 
 import logging
 from pathlib import Path
-
 import enoslib as en
 
 import logging
@@ -18,11 +17,11 @@ clusters = "paravance"
 
 site = "rennes"
 
-#logging.basicConfig(level=logging.DEBUG)
+en.init_logging(logging.INFO)
 
 master_nodes = []
 
-duration = "05:00:00"
+duration = "02:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
@@ -47,7 +46,7 @@ roles = en.sync_info(roles, networks)
 
 subnet = networks["my_subnet"]
 cp = 1
-w=20
+w=2
 virt_conf = (
     en.VMonG5kConf.from_settings(image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")
     .add_machine(

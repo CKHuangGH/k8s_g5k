@@ -7,9 +7,9 @@ en.init_logging(logging.INFO)
 
 job_name = Path(__file__).name
 
-CLUSTER = "parasilo"
+CLUSTER = "chiclet"
 
-SITE = "rennes"
+SITE = "lille"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=SITE)
 conf = (
