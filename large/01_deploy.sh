@@ -5,14 +5,6 @@ sleep 10
 python3 ./clusters/m2.py &
 
 
-
-
-
-
-
-
-
-
-
-chmod 777 02_system_ready.sh
-chmod 777 03_del.sh
+chmod 777 02_check.sh
+chmod 777 03_system_ready.sh
+chmod 777 04.del.sh
