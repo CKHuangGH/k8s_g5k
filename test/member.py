@@ -25,11 +25,11 @@ for i in range(0, len(clusters)):
     
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
-                                       image="/home/chuang/images/enos_vmong5k-base-image.qcow2")\
+                                       image="/home/chuang/images/images.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 1, "mem": 4096},
-                                     number=1)\
+                                     number=2)\
                         .finalize()
     provider = VMonG5k(conf)
 
