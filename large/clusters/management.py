@@ -43,9 +43,9 @@ for i in range(0, len(clusters)):
 
     # Make sure k8s is not already running
     #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-    time.sleep(30)
+    time.sleep(10)
     # Deploy k8s and dependencies
-    run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
+    run_ansible(["./deployment/deployment_0.yml"], inventory_path=inventory_file)
 
 f = open("node_list", 'a')
 f.write(str(master_nodes[0]))

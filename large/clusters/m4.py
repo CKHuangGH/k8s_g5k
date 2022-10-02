@@ -17,7 +17,7 @@ clusters = "paravance"
 
 site = "rennes"
 
-en.init_logging(logging.INFO)
+#en.init_logging(logging.INFO)
 
 master_nodes = []
 

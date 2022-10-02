@@ -17,7 +17,7 @@ clusters = "paravance"
 
 site = "rennes"
 
-en.init_logging(logging.INFO)
+#en.init_logging(logging.INFO)
 
 master_nodes = []
 
@@ -81,7 +81,7 @@ master_nodes.append(vmroles['cp'][0].address)
 #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
 time.sleep(30)
 # Deploy k8s and dependencies
-run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
+run_ansible(["./deployment/deployment_1.yml"], inventory_path=inventory_file)
 
 f = open("node_list", 'a')
 f.write(str(master_nodes[0]))
