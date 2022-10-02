@@ -48,7 +48,7 @@ subnet = networks["my_subnet"]
 cp = 1
 w=20
 virt_conf = (
-    en.VMonG5kConf.from_settings(image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")
+    en.VMonG5kConf.from_settings(image="/home/chuang/images/images.qcow2")
     .add_machine(
         roles=["cp"],
         number=cp,
@@ -79,9 +79,9 @@ master_nodes.append(vmroles['cp'][0].address)
 
 # Make sure k8s is not already running
 #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-time.sleep(30)
+time.sleep(60)
 # Deploy k8s and dependencies
-run_ansible(["./deployment/deployment_1.yml"], inventory_path=inventory_file)
+run_ansible(["./deployment/afterbuild.yml"], inventory_path=inventory_file)
 
 f = open("node_list", 'a')
 f.write(str(master_nodes[0]))
