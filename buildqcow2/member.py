@@ -29,7 +29,7 @@ for i in range(0, len(clusters)):
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 2, "mem": 4096},
-                                     number=3)\
+                                     number=1)\
                         .finalize()
     provider = VMonG5k(conf)
 
