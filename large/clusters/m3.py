@@ -30,7 +30,7 @@ name_job = name + clusters
 role_name = "cluster" + str(clusters)
 
 conf = (
-    en.G5kConf.from_settings(job_type="allow_classic_ssh", job_name=name_job)
+    en.G5kConf.from_settings(job_type="allow_classic_ssh", job_name=name_job, walltime=duration)
     .add_network_conf(prod_network)
     .add_network(
         id="not_linked_to_any_machine", type="slash_22", roles=["my_subnet"], site=site
@@ -48,20 +48,20 @@ subnet = networks["my_subnet"]
 cp = 1
 w=20
 virt_conf = (
-    en.VMonG5kConf.from_settings(image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")
+    en.VMonG5kConf.from_settings(image="/home/chuang/images/images.qcow2")
     .add_machine(
         roles=["cp"],
         number=cp,
         undercloud=roles["role1"],
         flavour_desc={"core": 2, "mem": 8192},
-        macs=list(subnet[0].free_macs)[0:1],
+        macs=list(subnet[0].free_macs)[1:2],
     )
     .add_machine(
         roles=["member"],
         number=w,
         undercloud=roles["role1"],
         flavour_desc={"core": 1, "mem": 4096},
-        macs=list(subnet[0].free_macs)[1:w+1],
+        macs=list(subnet[0].free_macs)[2:w+1],
     ).finalize()
 )
 
@@ -79,7 +79,7 @@ master_nodes.append(vmroles['cp'][0].address)
 
 # Make sure k8s is not already running
 #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-time.sleep(30)
+time.sleep(60)
 # Deploy k8s and dependencies
 run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
 
