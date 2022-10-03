@@ -79,9 +79,9 @@ master_nodes.append(vmroles['cp'][0].address)
 
 # Make sure k8s is not already running
 #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-time.sleep(60)
+time.sleep(10)
 # Deploy k8s and dependencies
-run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
+run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
 
 f = open("node_list", 'a')
 f.write(str(master_nodes[0]))
