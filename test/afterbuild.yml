@@ -1,6 +1,16 @@
 - hosts: all
   become: yes
   tasks:
+  - name: Remove swapfile from /etc/fstab
+    mount:
+      name: swap
+      fstype: swap
+      state: absent
+
+  - name: Disable swap
+    command: swapoff -a
+    when: ansible_swaptotal_mb > 0
+    
   - name: set up authorized keys for root user
     authorized_key: user=root key="{{item}}"
     with_file:
