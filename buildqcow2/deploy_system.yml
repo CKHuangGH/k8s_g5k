@@ -15,6 +15,16 @@
      - curl
      - software-properties-common
 
+  - name: Remove swapfile from /etc/fstab
+    mount:
+      name: swap
+      fstype: swap
+      state: absent
+
+  - name: Disable swap
+    command: swapoff -a
+    when: ansible_swaptotal_mb > 0
+
   - name: add Docker apt-key
     apt_key:
      url: https://download.docker.com/linux/ubuntu/gpg
@@ -77,3 +87,9 @@
     apt:
      name: kubeadm=1.23.5-00
      state: present
+
+   - name: install kubectl
+     apt:
+       name: kubectl=1.23.5-00
+       state: present
+       force: yes
