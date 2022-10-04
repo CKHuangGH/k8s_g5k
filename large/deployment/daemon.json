@@ -1,3 +1,4 @@
 {
+"registry-mirrors": ["http://docker-cache.grid5000.fr"],
 "exec-opts": ["native.cgroupdriver=systemd"]
 }

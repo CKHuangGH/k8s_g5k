@@ -1,0 +1,1 @@
+scp -o StrictHostKeyChecking=no -r images.qcow2 chuang@172.16.111.106:/home/chuang/images
