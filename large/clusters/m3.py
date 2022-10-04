@@ -60,7 +60,7 @@ virt_conf = (
         roles=["member"],
         number=w,
         undercloud=roles["role1"],
-        flavour_desc={"core": 2, "mem": 4096},
+        flavour_desc={"core": 1, "mem": 4096},
         macs=list(subnet[0].free_macs)[1:w+1],
     ).finalize()
 )
@@ -79,7 +79,7 @@ master_nodes.append(vmroles['cp'][0].address)
 
 # Make sure k8s is not already running
 #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-time.sleep(3)
+time.sleep(30)
 # Deploy k8s and dependencies
 run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
 
