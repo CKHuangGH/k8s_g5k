@@ -26,13 +26,13 @@ scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/acala/management/build.sh
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/acala/member/build.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/00_forlargescale.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/01_combineAll.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/02_acalavalue.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/03_createmember.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/04_mck8s-2.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/05_joining_test.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/createvalue.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/00_acala.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/00_prom.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/01_joining.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/acalavalue.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/combineAll.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/mck8s-management.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/promvalue.sh
 i=$((i+1))
 done
 
