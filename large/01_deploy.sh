@@ -1,9 +1,9 @@
 python3 ./clusters/management.py &
-sleep 6
+sleep 2
 python3 ./clusters/m1.py &
-sleep 6
+sleep 2
 python3 ./clusters/m2.py &
-sleep 6
+sleep 2
 python3 ./clusters/m3.py &
 
 chmod 777 02_check.sh
