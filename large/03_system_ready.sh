@@ -24,7 +24,7 @@ scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 # ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install aiohttp
 # #ssh -o StrictHostKeyChecking=no root@$j mv /root/.kube/config /root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/mck8s_vm/
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/mck8s_vm/large-scale/
 # ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/acala/member/build.sh
 # ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/00_acala.sh
 # ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/00_prom.sh
