@@ -1,2 +1,11 @@
 python3 ./delcluster/management.py
 python3 ./delcluster/m1.py
+python3 ./delcluster/m2.py
+python3 ./delcluster/m3.py
+python3 ./delcluster/m4.py
+python3 ./delcluster/m5.py
+python3 ./delcluster/m6.py
+python3 ./delcluster/m7.py
+python3 ./delcluster/m8.py
+python3 ./delcluster/m9.py
+python3 ./delcluster/m10.py
