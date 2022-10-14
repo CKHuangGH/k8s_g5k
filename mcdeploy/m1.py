@@ -40,7 +40,7 @@ for i in range(0, len(clusters)):
 
     roles, networks = provider.init()
 
-    inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
+    inventory_file = "kubefed_inventory_cluster" + str(name_job) + ".ini" 
 
     inventory = generate_inventory(roles, networks, inventory_file)
 
