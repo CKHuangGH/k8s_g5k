@@ -43,7 +43,7 @@ for i in range(0, len(clusters)):
 
     roles, networks = provider.init()
 
-    inventory_file = "kubefed_inventory_cluster" + str(i) + ".ini" 
+    inventory_file = "kubefed_inventory_cluster" + str(name_job) + ".ini" 
 
     inventory = generate_inventory(roles, networks, inventory_file)
 
@@ -51,9 +51,9 @@ for i in range(0, len(clusters)):
 
     # Make sure k8s is not already running
     #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-    time.sleep(30)
+    time.sleep(45)
     # Deploy k8s and dependencies
-    run_ansible(["deploy_system.yml"], inventory_path=inventory_file)
+    run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
     
 f = open("node_list", 'a')
 f.write(str(master_nodes[0]))
