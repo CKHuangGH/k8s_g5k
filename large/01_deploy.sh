@@ -19,26 +19,26 @@ sleep 5
 python3 ./clusters/m9.py &
 sleep 5
 python3 ./clusters/m10.py &
-# sleep 5
-# python3 ./clusters/m11.py &
-# sleep 5
-# python3 ./clusters/m12.py &
-# sleep 5
-# python3 ./clusters/m13.py &
-# sleep 5
-# python3 ./clusters/m14.py &
-# sleep 5
-# python3 ./clusters/m15.py &
-# sleep 5
-# python3 ./clusters/m16.py &
-# sleep 5
-# python3 ./clusters/m17.py &
-# sleep 5
-# python3 ./clusters/m18.py &
-# sleep 5
-# python3 ./clusters/m19.py &
-# sleep 5
-# python3 ./clusters/m20.py &
+sleep 5
+python3 ./clusters/m11.py &
+sleep 5
+python3 ./clusters/m12.py &
+sleep 5
+python3 ./clusters/m13.py &
+sleep 5
+python3 ./clusters/m14.py &
+sleep 5
+python3 ./clusters/m15.py &
+sleep 5
+python3 ./clusters/m16.py &
+sleep 5
+python3 ./clusters/m17.py &
+sleep 5
+python3 ./clusters/m18.py &
+sleep 5
+python3 ./clusters/m19.py &
+sleep 5
+python3 ./clusters/m20.py &
 # sleep 5
 # python3 ./clusters/m21.py &
 # sleep 5
