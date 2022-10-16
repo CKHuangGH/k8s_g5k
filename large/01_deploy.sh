@@ -39,26 +39,26 @@ sleep 5
 python3 ./clusters/m19.py &
 sleep 5
 python3 ./clusters/m20.py &
-# sleep 5
-# python3 ./clusters/m21.py &
-# sleep 5
-# python3 ./clusters/m22.py &
-# sleep 5
-# python3 ./clusters/m23.py &
-# sleep 5
-# python3 ./clusters/m24.py &
-# sleep 5
-# python3 ./clusters/m25.py &
-# sleep 5
-# python3 ./clusters/m26.py &
-# sleep 5
-# python3 ./clusters/m27.py &
-# sleep 5
-# python3 ./clusters/m28.py &
-# sleep 5
-# python3 ./clusters/m29.py &
-# sleep 5
-# python3 ./clusters/m30.py &
+sleep 5
+python3 ./clusters/m21.py &
+sleep 5
+python3 ./clusters/m22.py &
+sleep 5
+python3 ./clusters/m23.py &
+sleep 5
+python3 ./clusters/m24.py &
+sleep 5
+python3 ./clusters/m25.py &
+sleep 5
+python3 ./clusters/m26.py &
+sleep 5
+python3 ./clusters/m27.py &
+sleep 5
+python3 ./clusters/m28.py &
+sleep 5
+python3 ./clusters/m29.py &
+sleep 5
+python3 ./clusters/m30.py &
 
 chmod 777 02_check.sh
 chmod 777 03_system_ready.sh

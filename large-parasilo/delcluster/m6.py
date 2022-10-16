@@ -11,9 +11,9 @@ import enoslib as en
 import logging
 import time
 
-name = "m6"
+name = "m6-2"
 
-clusters = "parasilo"
+clusters = "paravance"
 
 site = "rennes"
 

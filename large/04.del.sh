@@ -19,13 +19,13 @@ python3 ./delcluster/m17.py
 python3 ./delcluster/m18.py
 python3 ./delcluster/m19.py
 python3 ./delcluster/m20.py
-# python3 ./delcluster/m21.py
-# python3 ./delcluster/m22.py
-# python3 ./delcluster/m23.py
-# python3 ./delcluster/m24.py
-# python3 ./delcluster/m25.py
-# python3 ./delcluster/m26.py
-# python3 ./delcluster/m27.py
-# python3 ./delcluster/m28.py
-# python3 ./delcluster/m29.py
-# python3 ./delcluster/m30.py
+python3 ./delcluster/m21.py
+python3 ./delcluster/m22.py
+python3 ./delcluster/m23.py
+python3 ./delcluster/m24.py
+python3 ./delcluster/m25.py
+python3 ./delcluster/m26.py
+python3 ./delcluster/m27.py
+python3 ./delcluster/m28.py
+python3 ./delcluster/m29.py
+python3 ./delcluster/m30.py
