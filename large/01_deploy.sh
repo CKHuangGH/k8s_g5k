@@ -59,6 +59,26 @@ sleep 5
 python3 ./clusters/m29.py &
 sleep 5
 python3 ./clusters/m30.py &
+sleep 5
+python3 ./clusters/m31.py &
+sleep 5
+python3 ./clusters/m32.py &
+sleep 5
+python3 ./clusters/m33.py &
+sleep 5
+python3 ./clusters/m34.py &
+sleep 5
+python3 ./clusters/m35.py &
+sleep 5
+python3 ./clusters/m36.py &
+sleep 5
+python3 ./clusters/m37.py &
+sleep 5
+python3 ./clusters/m38.py &
+sleep 5
+python3 ./clusters/m39.py &
+sleep 5
+python3 ./clusters/m40.py &
 
 chmod 777 02_check.sh
 chmod 777 03_system_ready.sh
