@@ -39,3 +39,13 @@ python3 ./delcluster/m37.py
 python3 ./delcluster/m38.py
 python3 ./delcluster/m39.py
 python3 ./delcluster/m40.py
+python3 ./delcluster/m41.py
+python3 ./delcluster/m42.py
+python3 ./delcluster/m43.py
+python3 ./delcluster/m44.py
+python3 ./delcluster/m45.py
+python3 ./delcluster/m46.py
+python3 ./delcluster/m47.py
+python3 ./delcluster/m48.py
+python3 ./delcluster/m49.py
+python3 ./delcluster/m50.py
