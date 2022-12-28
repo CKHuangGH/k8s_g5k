@@ -19,7 +19,7 @@ clusters = [cluster]
 
 master_nodes = []
 
-duration = "05:00:00"
+duration = "08:00:00"
 
 
 for i in range(0, len(clusters)):
@@ -34,7 +34,7 @@ for i in range(0, len(clusters)):
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 2, "mem": 8192},
-                                     number=2)\
+                                     number=6)\
                         .finalize()
     provider = VMonG5k(conf)
 
