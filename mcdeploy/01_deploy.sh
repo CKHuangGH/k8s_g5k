@@ -1,5 +1,5 @@
-python3 management.py &
-sleep 35
+python3 management.py
+#sleep 35
 python3 m1.py &
 sleep 5
 python3 m2.py &
