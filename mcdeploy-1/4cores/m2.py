@@ -11,11 +11,11 @@ import enoslib as en
 import logging
 import time
 
-name = "m1-1"
+name = "m2"
 
-clusters = "paravance"
+clusters = "ecotype"
 
-site = "rennes"
+site = "nantes"
 
 #en.init_logging(logging.INFO)
 
