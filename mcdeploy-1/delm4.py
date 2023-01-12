@@ -13,7 +13,7 @@ for line in f.readlines():
     cluster=line
     print(line)
 f.close
-clusters = [cluster]
+clusters = ["nova"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
