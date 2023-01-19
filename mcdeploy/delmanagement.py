@@ -13,7 +13,7 @@ for line in f.readlines():
     cluster=line
     print(line)
 f.close
-clusters = ["paravance"]
+clusters = ["parasilo"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
