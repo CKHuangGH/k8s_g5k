@@ -13,9 +13,9 @@ import time
 
 name = "m2"
 
-clusters = "ecotype"
+clusters = "paravance"
 
-site = "nantes"
+site = "rennes"
 
 #en.init_logging(logging.INFO)
 

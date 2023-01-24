@@ -13,9 +13,9 @@ import time
 
 name = "m5-1"
 
-clusters = "petitprince"
+clusters = "paravance"
 
-site = "luxembourg"
+site = "rennes"
 
 #en.init_logging(logging.INFO)
 
