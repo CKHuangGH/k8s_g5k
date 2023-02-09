@@ -1,60 +1,92 @@
 import subprocess
+from itertools import islice
 from enoslib.api import generate_inventory,run_ansible
 from enoslib.infra.enos_vmong5k.provider import VMonG5k
 from enoslib.infra.enos_vmong5k.configuration import Configuration
 
 import logging
+from pathlib import Path
+import enoslib as en
+
+import logging
 import time
 
-name = "mcdeploym3-2"
+name = "m3-2"
 
-f = open('00_clustername.txt')
-for line in f.readlines():
-    cluster=line
-    print(line)
-f.close
-clusters = [cluster]
+clusters = "paravance"
 
-#logging.basicConfig(level=logging.DEBUG)
+site = "rennes"
+
+#en.init_logging(logging.INFO)
 
 master_nodes = []
 
-duration = "05:00:00"
+duration = "08:00:00"
 
+prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
-for i in range(0, len(clusters)):
+name_job = name + clusters
 
-    name_job = name + clusters[i] + str(i)
+role_name = "cluster" + str(clusters)
 
-    role_name = "cluster" + str(clusters[i])
-    
-    conf = Configuration.from_settings(job_name=name_job,
-                                       walltime=duration,
-                                       image="/home/chuang/images/images.qcow2")\
-                        .add_machine(roles=[role_name],
-                                     cluster=clusters[i],
-                                     flavour_desc={"core": 2, "mem": 8192},
-                                     number=6)\
-                        .finalize()
-    provider = VMonG5k(conf)
+conf = (
+    en.G5kConf.from_settings(job_type="allow_classic_ssh", job_name=name_job, walltime=duration)
+    .add_network_conf(prod_network)
+    .add_network(
+        id="not_linked_to_any_machine", type="slash_22", roles=["my_subnet"], site=site
+    )
+    .add_machine(
+    roles=["role1"], cluster=clusters, nodes=1, primary_network=prod_network
+    )
+    .finalize()
+)
+provider = en.G5k(conf)
+roles, networks = provider.init()
+roles = en.sync_info(roles, networks)
 
-    roles, networks = provider.init()
+subnet = networks["my_subnet"]
+cp = 1
+w=5
+virt_conf = (
+    en.VMonG5kConf.from_settings(image="/home/chuang/images/images.qcow2")
+    .add_machine(
+        roles=["cp"],
+        number=cp,
+        undercloud=roles["role1"],
+        flavour_desc={"core": 4, "mem": 16384},
+        macs=list(subnet[0].free_macs)[0:1],
+    )
+    .add_machine(
+        roles=["member"],
+        number=w,
+        undercloud=roles["role1"],
+        flavour_desc={"core": 2, "mem": 8192},
+        macs=list(subnet[0].free_macs)[1:w+1],
+    ).finalize()
+)
 
-    inventory_file = "kubefed_inventory_cluster" + str(name_job) + ".ini" 
+vmroles = en.start_virtualmachines(virt_conf)
 
-    inventory = generate_inventory(roles, networks, inventory_file)
+print(vmroles)
 
-    master_nodes.append(roles[role_name][0].address)
+#print(networks)
 
-    # Make sure k8s is not already running
-    #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-    time.sleep(45)
-    # Deploy k8s and dependencies
-    run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
-    
+inventory_file = "kubefed_inventory_cluster"+ str(name_job) +".ini" 
+
+inventory = generate_inventory(vmroles, networks, inventory_file)
+
+master_nodes.append(vmroles['cp'][0].address)
+
+# Make sure k8s is not already running
+#run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
+time.sleep(45)
+# Deploy k8s and dependencies
+run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
+
 f = open("node_list", 'a')
 f.write(str(master_nodes[0]))
 f.write("\n")
 f.close
+
 print("Master nodes ........")
 print(master_nodes)
