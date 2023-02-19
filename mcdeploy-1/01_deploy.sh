@@ -9,7 +9,7 @@ sleep 5
 python3 m4.py &
 sleep 5
 python3 m5.py
-sleep 5
+sleep 30
 
 chmod 777 02_check.sh
 chmod 777 03_system_ready.sh
