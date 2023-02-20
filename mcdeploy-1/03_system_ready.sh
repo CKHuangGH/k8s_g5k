@@ -4,6 +4,7 @@ manage=$(awk NR==1 node_list)
 git clone https://github.com/CKHuangGH/mck8s_vm.git
 #git clone https://github.com/CKHuangGH/acala.git
 git clone https://github.com/CKHuangGH/k8s_google_injection.git
+git clone https://github.com/CKHuangGH/DASI.git
 #git clone https://github.com/CKHuangGH/acala_error.git
 rm -rf /home/chuang/.ssh/known_hosts
 
@@ -13,6 +14,7 @@ do
 scp -r ./mck8s_vm root@$j:/root/
 #scp -r ./acala root@$j:/root/
 scp -r ./k8s_google_injection root@$j:/root/
+scp -r ./DASI root@$j:/root/
 #scp -r ./acala_error root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 #ssh -o StrictHostKeyChecking=no root@$j chmod 777 ./install.sh
@@ -48,5 +50,6 @@ done < node_list
 
 scp /home/chuang/.ssh/id_rsa root@10.$ip1.$ip2.3:/root/.ssh
 scp -r ./mck8s_vm root@10.$ip1.$ip2.3:/root/
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/mck8s_vm/sasi/
 scp node_list root@$manage:/root/mck8s_vm/sasi/node_list
 echo "management node is $manage"
