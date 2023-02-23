@@ -16,7 +16,7 @@ for line in f.readlines():
     cluster=line
     print(line)
 f.close
-clusters = ["grisou"]
+clusters = ["paravance"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
