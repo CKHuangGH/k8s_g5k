@@ -15,7 +15,7 @@ name = "m3"
 
 clusters = "grisou"
 
-site = "Nancy"
+site = "nancy"
 
 #en.init_logging(logging.INFO)
 
