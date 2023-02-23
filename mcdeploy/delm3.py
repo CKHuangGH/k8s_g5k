@@ -13,9 +13,9 @@ import time
 
 name = "m3"
 
-clusters = "paravance"
+clusters = "grisou"
 
-site = "rennes"
+site = "Nancy"
 
 en.init_logging(logging.INFO)
 
