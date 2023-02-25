@@ -8,17 +8,7 @@ python3 m3.py &
 sleep 5
 python3 m4.py &
 sleep 5
-python3 m5.py &
-sleep 5
-python3 m6.py &
-sleep 5
-python3 m7.py &
-sleep 5
-python3 m8.py &
-sleep 5
-python3 m9.py &
-sleep 5
-python3 m10.py
+python3 m5.py
 
 sleep 30
 
