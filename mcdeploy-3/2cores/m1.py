@@ -6,23 +6,21 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-
-
-name = "mcdeploymaster-2"
-
+name = "mcdeploym1"
 
 f = open('00_clustername.txt')
 for line in f.readlines():
     cluster=line
     print(line)
 f.close
+
 clusters = ["paravance"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
 master_nodes = []
 
-duration = "06:00:00"
+duration = "08:00:00"
 
 
 for i in range(0, len(clusters)):
@@ -36,8 +34,8 @@ for i in range(0, len(clusters)):
                                        image="/home/chuang/images/images.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
-                                     flavour_desc={"core": 4, "mem": 16384},
-                                     number=2)\
+                                     flavour_desc={"core": 2, "mem": 8192},
+                                     number=6)\
                         .finalize()
     provider = VMonG5k(conf)
 

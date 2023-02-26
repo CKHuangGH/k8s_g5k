@@ -21,7 +21,7 @@ site = "rennes"
 
 master_nodes = []
 
-duration = "08:00:00"
+duration = "06:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
@@ -46,7 +46,7 @@ roles = en.sync_info(roles, networks)
 
 subnet = networks["my_subnet"]
 cp = 1
-w=8
+w=7
 virt_conf = (
     en.VMonG5kConf.from_settings(image="/home/chuang/images/images.qcow2")
     .add_machine(
