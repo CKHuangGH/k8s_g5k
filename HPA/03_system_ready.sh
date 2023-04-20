@@ -3,8 +3,8 @@ i=0
 manage=$(awk NR==1 node_list)
 git clone https://github.com/CKHuangGH/mck8s_vm.git
 #git clone https://github.com/CKHuangGH/acala.git
-git clone https://github.com/CKHuangGH/k8s_google_injection.git
-git clone https://github.com/CKHuangGH/DASI.git
+#git clone https://github.com/CKHuangGH/k8s_google_injection.git
+#git clone https://github.com/CKHuangGH/DASI.git
 #git clone https://github.com/CKHuangGH/acala_error.git
 rm -rf /home/chuang/.ssh/known_hosts
 
@@ -27,7 +27,7 @@ scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 # #ssh -o StrictHostKeyChecking=no root@$j mv /root/.kube/config /root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
 #ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/mck8s_vm/large-scale/
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/mck8s_vm/sasi/
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/mck8s_vm/HPA/
 # ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/acala/member/build.sh
 # ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/00_acala.sh
 # ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/large-scale/00_prom.sh
