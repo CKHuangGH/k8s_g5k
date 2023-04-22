@@ -8,11 +8,6 @@ import time
 
 name = "mcdeploymaster"
 
-f = open('00_clustername.txt')
-for line in f.readlines():
-    cluster=line
-    print(line)
-f.close
 clusters = ["paravance"]
 
 #logging.basicConfig(level=logging.DEBUG)
@@ -34,7 +29,7 @@ for i in range(0, len(clusters)):
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 4, "mem": 16384},
-                                     number=2)\
+                                     number=6)\
                         .finalize()
     provider = VMonG5k(conf)
     provider.destroy()
