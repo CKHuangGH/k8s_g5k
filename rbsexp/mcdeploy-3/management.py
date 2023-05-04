@@ -8,7 +8,7 @@ import time
 
 
 
-name = "mcdeploymaster-3"
+name = "mcdeploymaster-2"
 
 
 f = open('00_clustername.txt')

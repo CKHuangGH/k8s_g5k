@@ -6,7 +6,7 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "mcdeploymaster-1"
+name = "mcdeploymaster"
 
 f = open('00_clustername.txt')
 for line in f.readlines():

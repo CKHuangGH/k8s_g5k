@@ -11,7 +11,7 @@ import enoslib as en
 import logging
 import time
 
-name = "m3-4"
+name = "m3-3"
 
 clusters = "paravance"
 
