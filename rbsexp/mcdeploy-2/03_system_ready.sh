@@ -19,7 +19,7 @@ scp -r ./k8s_google_injection root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
 #ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/large-scale/
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/0-kubefed/
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/
 i=$((i+1))
 done
 
@@ -34,6 +34,9 @@ done < node_list
 
 scp /home/chuang/.ssh/id_rsa root@10.$ip1.$ip2.3:/root/.ssh
 scp -r ./exprbs root@10.$ip1.$ip2.3:/root/
-ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/sasi/
-scp node_list root@$manage:/root/exprbs/sasi/node_list
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
+scp node_list root@$manage:/root/exprbs/0-kubefed/node_list
+scp node_list root@$manage:/root/exprbs/1-mck8s/node_list
+scp node_list root@$manage:/root/exprbs/2-mck8s-prom/node_list
+scp node_list root@$manage:/root/exprbs/3-mck8s-acala/node_list
 echo "management node is $manage"

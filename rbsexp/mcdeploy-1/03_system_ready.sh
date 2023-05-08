@@ -34,6 +34,9 @@ done < node_list
 
 scp /home/chuang/.ssh/id_rsa root@10.$ip1.$ip2.3:/root/.ssh
 scp -r ./exprbs root@10.$ip1.$ip2.3:/root/
-ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/0-kubefed/
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
 scp node_list root@$manage:/root/exprbs/0-kubefed/node_list
+scp node_list root@$manage:/root/exprbs/1-mck8s/node_list
+scp node_list root@$manage:/root/exprbs/2-mck8s-prom/node_list
+scp node_list root@$manage:/root/exprbs/3-mck8s-acala/node_list
 echo "management node is $manage"
