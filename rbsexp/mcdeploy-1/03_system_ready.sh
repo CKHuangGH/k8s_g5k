@@ -19,7 +19,7 @@ scp -r ./k8s_google_injection root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
 #ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/large-scale/
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/0-kubefed/
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/
 i=$((i+1))
 done
 
