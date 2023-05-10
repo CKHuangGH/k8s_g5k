@@ -6,7 +6,7 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "mcdeploymaster-4"
+name = "mcdeploymaster-3"
 
 f = open('00_clustername.txt')
 for line in f.readlines():
@@ -30,7 +30,7 @@ for i in range(0, len(clusters)):
     
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
-                                       image="/grid5000/virt-images/ubuntu2004-x64-min-4022032913.qcow2")\
+                                       image="/grid5000/virt-images/ubuntu2004-x64-min-3022032913.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 4, "mem": 16384},
