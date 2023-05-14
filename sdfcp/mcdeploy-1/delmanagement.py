@@ -6,7 +6,7 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "mcdeploymaster"
+name = "mcdeploymaster-sdfcp"
 
 clusters = ["paravance"]
 

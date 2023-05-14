@@ -8,7 +8,7 @@ import time
 
 
 
-name = "mcdeploymaster"
+name = "mcdeploymaster-sdfcp"
 
 clusters = ["paravance"]
 
