@@ -11,11 +11,6 @@ import time
 name = "mcdeploymaster-5"
 
 
-f = open('00_clustername.txt')
-for line in f.readlines():
-    cluster=line
-    print(line)
-f.close
 clusters = ["paravance"]
 
 #logging.basicConfig(level=logging.DEBUG)
