@@ -53,3 +53,5 @@ scp node_list root@$manage2:/root/exprbs/0-kubefed/node_list
 scp node_list root@$manage2:/root/exprbs/1-mck8s/node_list
 scp node_list root@$manage2:/root/exprbs/2-mck8s-prom/node_list
 scp node_list root@$manage2:/root/exprbs/3-mck8s-acala/node_list
+
+echo "management node is $manage"
