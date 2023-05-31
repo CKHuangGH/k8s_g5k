@@ -20,8 +20,6 @@ scp -r ./exprbs root@$j:/root/
 #scp -r ./acala_error root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
-ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage1:/root/.kube/cluster$i
-ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage2:/root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/
 i=$((i+1))
 done
