@@ -6,7 +6,7 @@ from enoslib.infra.enos_vmong5k.configuration import Configuration
 import logging
 import time
 
-name = "member"
+name = "buildOS"
 
 clusters = ["paravance"]
 
@@ -14,7 +14,7 @@ clusters = ["paravance"]
 
 master_nodes = []
 
-duration = "02:00:00"
+duration = "03:00:00"
 
 
 for i in range(0, len(clusters)):
@@ -25,7 +25,7 @@ for i in range(0, len(clusters)):
     
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
-                                       image="/grid5000/virt-images/ubuntu2004-x64-min-2022032913.qcow2")\
+                                       image="/grid5000/virt-images/ubuntu2004-x64-min.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 2, "mem": 4096},
