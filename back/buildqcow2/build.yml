@@ -16,7 +16,6 @@
      - software-properties-common
      - vim
      - systemd
-     - containerd.io
 
   # - name: add Docker apt-key
   #   apt_key:
