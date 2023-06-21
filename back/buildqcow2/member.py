@@ -8,7 +8,7 @@ import time
 
 name = "buildOS"
 
-clusters = ["paravance"]
+clusters = ["parasilo"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
