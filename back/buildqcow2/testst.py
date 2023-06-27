@@ -26,7 +26,6 @@ for i in range(0, len(clusters)):
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
                                        env_name="ubuntu2204-min")\
-                                       
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 4, "mem": 4096},
