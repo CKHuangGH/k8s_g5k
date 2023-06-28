@@ -48,7 +48,7 @@ subnet = networks["my_subnet"]
 cp = 1
 w=2
 virt_conf = (
-    en.VMonG5kConf.from_settings(image="/home/chuang/images/images.qcow2")
+    en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
     .add_machine(
         roles=["cp"],
         number=cp,
