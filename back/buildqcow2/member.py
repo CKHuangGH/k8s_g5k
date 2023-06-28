@@ -25,6 +25,7 @@ for i in range(0, len(clusters)):
     
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
+                                       gateway=True,
                                        image="/grid5000/virt-images/ubuntu2204-x64-min-2023042409.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
