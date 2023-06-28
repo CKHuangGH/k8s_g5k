@@ -27,7 +27,7 @@ for i in range(0, len(clusters)):
     
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
-                                       image="/home/chuang/images/newnewimages.qcow2")\
+                                       image="/home/chuang/images/newimages.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
                                      flavour_desc={"core": 4, "mem": 16384},
