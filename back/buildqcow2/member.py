@@ -25,10 +25,10 @@ for i in range(0, len(clusters)):
     
     conf = Configuration.from_settings(job_name=name_job,
                                        walltime=duration,
-                                       image="/grid5000/virt-images/debian11-x64-min.qcow2")\
+                                       image="/grid5000/virt-images/ubuntu2004-x64-min.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
-                                     flavour_desc={"core": 4, "mem": 4096},
+                                     flavour_desc={"core": 8, "mem": 8192},
                                      number=1)\
                         .finalize()
     provider = VMonG5k(conf)
