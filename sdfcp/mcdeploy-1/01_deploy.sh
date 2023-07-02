@@ -1,8 +1,9 @@
 python3 management.py &
-python3 management-1.py 
-#sleep 35
+#python3 management-1.py 
+sleep 30
 python3 m1.py
 
+echo "wait for 30 secs"
 sleep 30
 
 chmod 777 02_check.sh
