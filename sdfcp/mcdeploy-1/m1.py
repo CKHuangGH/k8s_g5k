@@ -46,7 +46,7 @@ roles = en.sync_info(roles, networks)
 
 subnet = networks["my_subnet"]
 cp = 1
-w=5
+w=6
 virt_conf = (
     en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
     .add_machine(
