@@ -1,5 +1,5 @@
-python3 management.py &
-python3 management-1.py &
+#python3 management.py &
+#python3 management-1.py &
 python3 management-2.py
 sleep 30
 python3 m1.py
