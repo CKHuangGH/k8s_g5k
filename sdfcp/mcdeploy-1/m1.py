@@ -52,7 +52,8 @@ virt_conf = (
     .add_machine(
         roles=["cp"],
         number=cp,
-        undercloud=roles["role1"],
+        cluster=clusters,
+        # undercloud=roles["role1"],
         flavour_desc={"core": 4, "mem": 16384},
         macs=list(subnet[0].free_macs)[0:1],
     )
