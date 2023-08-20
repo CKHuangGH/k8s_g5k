@@ -36,16 +36,13 @@ conf = (
         id="not_linked_to_any_machine", type="slash_22", roles=["my_subnet"], site=site
     )
     .add_machine(
-    roles=["role1"], cluster="parasilo", nodes=1, primary_network=prod_network
-    )
-    .add_machine(
-    roles_work=["workers"], cluster=clusters, primary_network=prod_network
+    roles=["role1"], cluster=clusters, primary_network=prod_network
     )
     .finalize()
 )
 provider = en.G5k(conf)
-roles, roles_work, networks = provider.init()
-roles = en.sync_info(roles, networks, roles_work)
+roles, networks = provider.init()
+roles = en.sync_info(roles, networks)
 
 subnet = networks["my_subnet"]
 cp = 1
@@ -62,7 +59,7 @@ virt_conf = (
     .add_machine(
         roles=["member"],
         number=w,
-        undercloud=roles_work["workers"],
+        undercloud=roles["role1"],
         flavour_desc={"core": 1, "mem": 4096},
         macs=list(subnet[0].free_macs)[1:w+1],
     ).finalize()
