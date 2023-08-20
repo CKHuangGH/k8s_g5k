@@ -46,14 +46,14 @@ roles = en.sync_info(roles, networks)
 
 subnet = networks["my_subnet"]
 cp = 1
-w=30
+w=100
 virt_conf = (
     en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
     .add_machine(
         roles=["cp"],
         number=cp,
         undercloud=roles["role1"],
-        flavour_desc={"core": 4, "mem": 16384},
+        flavour_desc={"core": 8, "mem": 16384},
         macs=list(subnet[0].free_macs)[0:1],
     )
     .add_machine(
