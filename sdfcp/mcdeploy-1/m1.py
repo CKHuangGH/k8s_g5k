@@ -46,7 +46,7 @@ roles = en.sync_info(roles, networks)
 
 netem = en.Netem()
 (
-    netem.add_constraints("delay 100ms", roles["role1"], symmetric=True)
+    netem.add_constraints("delay 25ms", roles["role1"], symmetric=True)
 )
 
 netem.deploy()
