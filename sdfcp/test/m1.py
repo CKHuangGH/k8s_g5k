@@ -36,7 +36,7 @@ conf = (
         id="not_linked_to_any_machine", type="slash_22", roles=["my_subnet"], site=site
     )
     .add_machine(
-    roles=["role1"], cluster=clusters, nodes=1, primary_network=prod_network
+    roles=["role1"], cluster=clusters, nodes=3, primary_network=prod_network
     )
     .finalize()
 )
@@ -44,17 +44,9 @@ provider = en.G5k(conf)
 roles, networks = provider.init()
 roles = en.sync_info(roles, networks)
 
-netem = en.Netem()
-(
-    netem.add_constraints("delay 100ms", roles["role1"], symmetric=True)
-)
-
-netem.deploy()
-netem.validate()
-
 subnet = networks["my_subnet"]
 cp = 1
-w = 3
+w = 20
 virt_conf = (
     en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
     .add_machine(
