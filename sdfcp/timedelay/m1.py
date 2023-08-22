@@ -11,7 +11,7 @@ import enoslib as en
 import logging
 import time
 
-name = "m1-sdfcp-3"
+name = "m1-sdfcp-2"
 
 clusters = "paravance"
 
@@ -21,7 +21,7 @@ site = "rennes"
 
 master_nodes = []
 
-duration = "06:00:00"
+duration = "08:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
@@ -36,7 +36,7 @@ conf = (
         id="not_linked_to_any_machine", type="slash_22", roles=["my_subnet"], site=site
     )
     .add_machine(
-    roles=["role1"], cluster=clusters, nodes=1, primary_network=prod_network
+    roles=["role1"], cluster=clusters, nodes=3, primary_network=prod_network
     )
     .finalize()
 )
@@ -44,23 +44,31 @@ provider = en.G5k(conf)
 roles, networks = provider.init()
 roles = en.sync_info(roles, networks)
 
+netem = en.Netem()
+(
+    netem.add_constraints("delay 100ms", roles["role1"], symmetric=True)
+)
+
+netem.deploy()
+netem.validate()
+
 subnet = networks["my_subnet"]
 cp = 1
-w=6
+w = 3
 virt_conf = (
     en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
     .add_machine(
         roles=["cp"],
         number=cp,
         undercloud=roles["role1"],
-        flavour_desc={"core": 4, "mem": 8192},
+        flavour_desc={"core": 16, "mem": 32768},
         macs=list(subnet[0].free_macs)[0:1],
     )
     .add_machine(
         roles=["member"],
         number=w,
         undercloud=roles["role1"],
-        flavour_desc={"core": 2, "mem": 8192},
+        flavour_desc={"core": 2, "mem": 4096},
         macs=list(subnet[0].free_macs)[1:w+1],
     ).finalize()
 )

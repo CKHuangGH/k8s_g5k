@@ -8,7 +8,7 @@ import time
 
 
 
-name = "mcdeploymaster-sdfcp-31"
+name = "mcdeploymaster-sdfcp-21"
 
 clusters = ["paravance"]
 
@@ -16,7 +16,7 @@ clusters = ["paravance"]
 
 master_nodes = []
 
-duration = "06:00:00"
+duration = "08:00:00"
 
 
 for i in range(0, len(clusters)):
@@ -30,11 +30,11 @@ for i in range(0, len(clusters)):
                                        image="/home/chuang/images/newimages.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
-                                     flavour_desc={"core": 4, "mem": 16384},
+                                     flavour_desc={"core": 8, "mem": 16384},
                                      number=2)\
                         .finalize()
     provider = VMonG5k(conf)
-
+8
     roles, networks = provider.init()
 
     inventory_file = "kubefed_inventory_cluster" + str(name_job) + ".ini" 
