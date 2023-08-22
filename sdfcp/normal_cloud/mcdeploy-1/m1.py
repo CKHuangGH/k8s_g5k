@@ -21,7 +21,7 @@ site = "rennes"
 
 master_nodes = []
 
-duration = "06:00:00"
+duration = "08:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
@@ -47,23 +47,12 @@ provider = en.G5k(conf)
 roles, networks = provider.init()
 roles = en.sync_info(roles, networks)
 
-<<<<<<< HEAD:sdfcp/normal_cloud/mcdeploy-1/m1.py
 subnet = networks["my_subnet"]
 cp = 1
 w=3
-=======
-netem = en.Netem()
-(
-    netem.add_constraints("delay 25ms", roles["role1"], symmetric=True)
+
 )
 
-netem.deploy()
-netem.validate()
-
-subnet = networks["my_subnet"]
-cp = 1
-w = 20
->>>>>>> f61fe614ba11caab924e8eda347923b2f3f2ebb1:sdfcp/mcdeploy-1/m1.py
 virt_conf = (
     en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
     .add_machine(
