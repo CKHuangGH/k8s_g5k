@@ -34,7 +34,7 @@ for i in range(0, len(clusters)):
                                      number=2)\
                         .finalize()
     provider = VMonG5k(conf)
-8
+    
     roles, networks = provider.init()
 
     inventory_file = "kubefed_inventory_cluster" + str(name_job) + ".ini" 
