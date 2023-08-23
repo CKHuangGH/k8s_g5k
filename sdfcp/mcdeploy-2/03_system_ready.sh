@@ -14,6 +14,7 @@ for j in $(cat node_list)
 do
 #scp ./install.sh root@$j:/root/
 scp -r ./exprbs root@$j:/root/
+scp /home/chuang/images/nginx.tar root@$j:/root/
 #scp -r ./acala root@$j:/root/
 #scp -r ./k8s_google_injection root@$j:/root/
 #scp -r ./DASI root@$j:/root/
@@ -24,17 +25,6 @@ ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/
 i=$((i+1))
 done
 
-while read line
-do 
-echo $line
-ip1=$(echo $line | cut -d "." -f 2)
-ip2=$(echo $line | cut -d "." -f 3)
-break
-done < node_list
-
-
-scp /home/chuang/.ssh/id_rsa root@10.$ip1.$ip2.3:/root/.ssh
-scp -r ./exprbs root@10.$ip1.$ip2.3:/root/
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
 scp node_list root@$manage:/root/exprbs/kubernetes/node_list
 scp node_list root@$manage:/root/exprbs/0-kubefed/node_list
