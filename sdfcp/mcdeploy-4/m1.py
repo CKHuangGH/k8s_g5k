@@ -21,7 +21,7 @@ site = "rennes"
 
 master_nodes = []
 
-duration = "08:00:00"
+duration = "15:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
