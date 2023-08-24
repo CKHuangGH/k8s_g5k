@@ -30,8 +30,8 @@ for i in range(0, len(clusters)):
                                        image="/home/chuang/images/newimages.qcow2")\
                         .add_machine(roles=[role_name],
                                      cluster=clusters[i],
-                                     flavour_desc={"core": 8, "mem": 16384},
-                                     number=2)\
+                                     flavour_desc={"core": 16, "mem": 32768},
+                                     number=1)\
                         .finalize()
     provider = VMonG5k(conf)
     
