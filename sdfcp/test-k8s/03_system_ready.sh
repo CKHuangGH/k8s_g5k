@@ -27,6 +27,7 @@ done
 
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
 scp node_list root@$manage:/root/exprbs/kubernetes/node_list
+scp node_list root@$manage:/root/exprbs/single-k8s/node_list
 scp node_list root@$manage:/root/exprbs/0-kubefed/node_list
 scp node_list root@$manage:/root/exprbs/1-mck8s/node_list
 scp node_list root@$manage:/root/exprbs/2-mck8s-prom/node_list
