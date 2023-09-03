@@ -15,7 +15,7 @@ name = "m1-sdfcp-23"
 
 clusters = "grisou"
 
-site = "rennes"
+site = "nancy"
 
 #en.init_logging(logging.INFO)
 
