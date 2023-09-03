@@ -13,7 +13,7 @@ import time
 
 name = "m1-sdfcp-22"
 
-clusters = "paravance"
+clusters = "grisou"
 
 site = "rennes"
 
