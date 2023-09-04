@@ -8,7 +8,7 @@ import time
 
 name = "mcdeploymaster-sdfcp-23"
 
-clusters = ["grimoire"]
+clusters = ["paravance"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
