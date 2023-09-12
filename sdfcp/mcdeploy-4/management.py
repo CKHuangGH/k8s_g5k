@@ -16,7 +16,7 @@ clusters = ["parasilo"]
 
 master_nodes = []
 
-duration = "6:00:00"
+duration = "15:00:00"
 
 
 for i in range(0, len(clusters)):
