@@ -1,4 +1,4 @@
-folders=("/home/chuang/k8s_g5k/sdfcp/mcdeploy-1" "/home/chuang/k8s_g5k/sdfcp/mcdeploy-2" "/home/chuang/k8s_g5k/sdfcp/mcdeploy-3" "/home/chuang/k8s_g5k/sdfcp/mcdeploy-4" "/home/chuang/k8s_g5k/sdfcp/mcdeploy-5" "/home/chuang/k8s_g5k/sdfcp/mcdeploy-6")
+folders=("/home/chuang/k8s_g5k/sdfcp-stress/mcdeploy-1" "/home/chuang/k8s_g5k/sdfcp-stress/mcdeploy-2" "/home/chuang/k8s_g5k/sdfcp-stress/mcdeploy-3" "/home/chuang/k8s_g5k/sdfcp-stress/mcdeploy-4" "/home/chuang/k8s_g5k/sdfcp-stress/mcdeploy-5" "/home/chuang/k8s_g5k/sdfcp-stress/mcdeploy-6")
 
 for folder in "${folders[@]}"; do
     cd "$folder" || exit 1 
