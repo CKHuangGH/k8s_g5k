@@ -49,7 +49,7 @@ for i in range(0,3):
     virt_conf = (
         en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
         .add_machine(
-            roles=[str(i)],
+            roles=["cp"],
             number=1,
             undercloud=roles["role0"],
             flavour_desc={"core": 2, "mem": 8192},
@@ -68,7 +68,7 @@ for i in range(0,3):
 
     inventory = generate_inventory(vmroles, networks, inventory_file)
 
-    master_nodes.append(vmroles[str(i)][0].address)
+    master_nodes.append(vmroles["cp"][0].address)
 
     # Make sure k8s is not already running
     #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
@@ -78,6 +78,6 @@ for i in range(0,3):
 
 f = open("node_list", 'a')
 for i in range(0,3):
-    f.write(str(master_nodes[0]))
+    f.write(str(master_nodes[i]))
     f.write("\n")
 f.close
