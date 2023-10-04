@@ -37,19 +37,14 @@ conf = (
     )
     .add_machine(
     roles=["role0"], cluster=clusters, nodes=1, primary_network=prod_network
-    )
-    .add_machine(
-    roles=["role1"], cluster=clusters, nodes=1, primary_network=prod_network
-    )
-    .finalize()
+    ).finalize()
 )
 provider = en.G5k(conf)
 roles, networks = provider.init()
 roles = en.sync_info(roles, networks)
 
 subnet = networks["my_subnet"]
-cp = 1
-w=5
+w=3
 
 virt_conf = (
     en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
@@ -57,15 +52,8 @@ virt_conf = (
         roles=["cp"],
         number=cp,
         undercloud=roles["role0"],
-        flavour_desc={"core": 16, "mem": 32768},
-        macs=list(subnet[0].free_macs)[0:1],
-    )
-    .add_machine(
-        roles=["member"],
-        number=w,
-        undercloud=roles["role1"],
         flavour_desc={"core": 2, "mem": 4096},
-        macs=list(subnet[0].free_macs)[1:w+1],
+        macs=list(subnet[0].free_macs)[0:1],
     ).finalize()
 )
 
