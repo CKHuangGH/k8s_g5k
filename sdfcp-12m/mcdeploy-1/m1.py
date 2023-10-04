@@ -21,7 +21,7 @@ site = "rennes"
 
 master_nodes = []
 
-duration = "15:00:00"
+duration = "2:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
@@ -44,41 +44,40 @@ roles, networks = provider.init()
 roles = en.sync_info(roles, networks)
 
 subnet = networks["my_subnet"]
-w=3
 
-virt_conf = (
-    en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
-    .add_machine(
-        roles=["cp"],
-        number=cp,
-        undercloud=roles["role0"],
-        flavour_desc={"core": 2, "mem": 4096},
-        macs=list(subnet[0].free_macs)[0:1],
-    ).finalize()
-)
+for i in range(0,3):
+    virt_conf = (
+        en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
+        .add_machine(
+            roles=["cp"],
+            number=1,
+            undercloud=roles["role0"],
+            flavour_desc={"core": 2, "mem": 8192},
+            macs=list(subnet[0].free_macs)[i:i+1],
+        ).finalize()
+    )
 
-vmroles = en.start_virtualmachines(virt_conf)
+    vmroles = en.start_virtualmachines(virt_conf)
 
-print(vmroles)
+    print(vmroles)
 
-#print(networks)
+    #print(networks)
+    tempname=name_job+str(i)
 
-inventory_file = "kubefed_inventory_cluster"+ str(name_job) +".ini" 
+    inventory_file = "kubefed_inventory_cluster"+ str(tempname) +".ini" 
 
-inventory = generate_inventory(vmroles, networks, inventory_file)
+    inventory = generate_inventory(vmroles, networks, inventory_file)
 
-master_nodes.append(vmroles['cp'][0].address)
+    master_nodes.append(vmroles['cp'][0].address)
 
-# Make sure k8s is not already running
-#run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-time.sleep(45)
-# Deploy k8s and dependencies
-run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
+    # Make sure k8s is not already running
+    #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
+    time.sleep(45)
+    # Deploy k8s and dependencies
+    run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
 
 f = open("node_list", 'a')
-f.write(str(master_nodes[0]))
-f.write("\n")
+for i in range(0,3):
+    f.write(str(master_nodes[0]))
+    f.write("\n")
 f.close
-
-print("Master nodes ........")
-print(master_nodes)
