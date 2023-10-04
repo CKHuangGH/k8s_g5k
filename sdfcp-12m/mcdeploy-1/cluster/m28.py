@@ -11,7 +11,7 @@ import enoslib as en
 import logging
 import time
 
-name = "m1-sdfcp-2"
+name = "m1-sdfcp-28"
 
 clusters = "paravance"
 
@@ -21,7 +21,7 @@ site = "rennes"
 
 master_nodes = []
 
-duration = "2:00:00"
+duration = "15:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
@@ -45,14 +45,14 @@ roles = en.sync_info(roles, networks)
 
 subnet = networks["my_subnet"]
 
-for i in range(0,3):
+for i in range(0,10):
     virt_conf = (
         en.VMonG5kConf.from_settings(image="/home/chuang/images/newimages.qcow2")
         .add_machine(
             roles=["cp"],
             number=1,
             undercloud=roles["role0"],
-            flavour_desc={"core": 2, "mem": 8192},
+            flavour_desc={"core": 2, "mem": 4096},
             macs=list(subnet[0].free_macs)[i:i+1],
         ).finalize()
     )
@@ -77,7 +77,7 @@ for i in range(0,3):
     run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
 
 f = open("node_list", 'a')
-for i in range(0,3):
+for i in range(0,10):
     f.write(str(master_nodes[i]))
     f.write("\n")
 f.close
