@@ -68,7 +68,7 @@ for i in range(0,3):
 
     inventory = generate_inventory(vmroles, networks, inventory_file)
 
-    master_nodes.append(vmroles['cp'][0].address)
+    master_nodes.append(vmroles['cp'][i].address)
 
     # Make sure k8s is not already running
     #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
