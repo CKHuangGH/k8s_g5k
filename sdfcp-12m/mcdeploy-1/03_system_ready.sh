@@ -1,8 +1,6 @@
 #!/bin/bash
 i=0
 manage=$(awk NR==1 node_list)
-manage1=$(awk NR==2 node_list)
-manage2=$(awk NR==3 node_list)
 git clone https://github.com/CKHuangGH/exprbs.git
 #git clone https://github.com/CKHuangGH/acala.git
 #git clone https://github.com/CKHuangGH/k8s_google_injection.git
@@ -27,21 +25,5 @@ done
 
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
 scp node_list root@$manage:/root/exprbs/kubernetes/node_list
-scp node_list root@$manage:/root/exprbs/0-kubefed/node_list
-scp node_list root@$manage:/root/exprbs/1-mck8s/node_list
-scp node_list root@$manage:/root/exprbs/2-mck8s-prom/node_list
-scp node_list root@$manage:/root/exprbs/3-mck8s-acala/node_list
-
-scp node_list root@$manage1:/root/exprbs/kubernetes/node_list
-scp node_list root@$manage1:/root/exprbs/0-kubefed/node_list
-scp node_list root@$manage1:/root/exprbs/1-mck8s/node_list
-scp node_list root@$manage1:/root/exprbs/2-mck8s-prom/node_list
-scp node_list root@$manage1:/root/exprbs/3-mck8s-acala/node_list
-
-scp node_list root@$manage2:/root/exprbs/kubernetes/node_list
-scp node_list root@$manage2:/root/exprbs/0-kubefed/node_list
-scp node_list root@$manage2:/root/exprbs/1-mck8s/node_list
-scp node_list root@$manage2:/root/exprbs/2-mck8s-prom/node_list
-scp node_list root@$manage2:/root/exprbs/3-mck8s-acala/node_list
-
+scp node_list root@$manage:/root/exprbs/12m/node_list
 echo "management node is $manage"
