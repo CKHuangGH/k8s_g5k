@@ -18,10 +18,16 @@ scp /home/chuang/images/nginx.tar root@$j:/root/ &
 #scp -r ./DASI root@$j:/root/
 #scp -r ./acala_error root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh &
-ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i &
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/ &
 i=$((i+1))
 done
+sleep 60
+for j in $(cat node_list)
+do
+ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/exprbs/
+i=$((i+1))
+done
+
 
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
 scp node_list root@$manage:/root/exprbs/kubernetes/node_list
