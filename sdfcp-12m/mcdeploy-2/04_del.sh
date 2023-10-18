@@ -29,3 +29,13 @@ python3 ./delcluster/m27.py &
 python3 ./delcluster/m28.py &
 python3 ./delcluster/m29.py &
 python3 ./delcluster/m30.py &
+python3 ./delcluster/m31.py &
+python3 ./delcluster/m32.py &
+python3 ./delcluster/m33.py &
+python3 ./delcluster/m34.py &
+python3 ./delcluster/m35.py &
+python3 ./delcluster/m36.py &
+python3 ./delcluster/m37.py &
+python3 ./delcluster/m38.py &
+python3 ./delcluster/m39.py &
+python3 ./delcluster/m40.py &
