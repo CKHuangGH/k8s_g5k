@@ -39,7 +39,17 @@ python3 ./cluster/m36.py &
 python3 ./cluster/m37.py &
 python3 ./cluster/m38.py &
 python3 ./cluster/m39.py &
-python3 ./cluster/m40.py
+python3 ./cluster/m40.py &
+python3 ./cluster/m41.py &
+python3 ./cluster/m42.py &
+python3 ./cluster/m43.py &
+python3 ./cluster/m44.py &
+python3 ./cluster/m45.py &
+python3 ./cluster/m46.py &
+python3 ./cluster/m47.py &
+python3 ./cluster/m48.py &
+python3 ./cluster/m49.py &
+python3 ./cluster/m50.py
 
 echo "wait for 60 secs"
 sleep 300
