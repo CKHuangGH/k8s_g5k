@@ -52,7 +52,7 @@ python3 ./cluster/m49.py &
 python3 ./cluster/m50.py
 
 echo "wait for 60 secs"
-sleep 600
+sleep 900
 
 chmod 777 02_check.sh
 chmod 777 03_system_ready.sh
