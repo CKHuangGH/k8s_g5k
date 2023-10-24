@@ -32,4 +32,5 @@ done
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
 scp node_list root@$manage:/root/exprbs/kubernetes/node_list
 scp node_list root@$manage:/root/exprbs/12m/node_list
+scp node_list root@$manage:/root/exprbs/21m/node_list
 echo "management node is $manage"
