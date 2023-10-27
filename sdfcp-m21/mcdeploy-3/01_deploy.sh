@@ -1,6 +1,6 @@
 python3 ./cluster/management.py
 sleep 60
-# python3 ./cluster/m1.py &
+#python3 ./cluster/m1.py
 # python3 ./cluster/m2.py &
 # python3 ./cluster/m3.py &
 # python3 ./cluster/m4.py &
@@ -52,7 +52,7 @@ sleep 60
 # python3 ./cluster/m50.py
 
 echo "wait for 60 secs"
-sleep 900
+sleep 30
 
 chmod 777 02_check.sh
 chmod 777 03_system_ready.sh
