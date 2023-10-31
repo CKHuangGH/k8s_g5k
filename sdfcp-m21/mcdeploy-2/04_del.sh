@@ -1,4 +1,3 @@
-python3 ./delcluster/delmanagement.py &
 python3 ./delcluster/m1.py &
 python3 ./delcluster/m2.py &
 python3 ./delcluster/m3.py &
@@ -48,4 +47,5 @@ python3 ./delcluster/m46.py &
 python3 ./delcluster/m47.py &
 python3 ./delcluster/m48.py &
 python3 ./delcluster/m49.py &
-python3 ./delcluster/m50.py &
+python3 ./delcluster/m50.py
+python3 ./delcluster/delmanagement.py &

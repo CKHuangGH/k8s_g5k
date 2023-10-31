@@ -13,7 +13,7 @@ import time
 
 name = "sdfcp-management-1"
 
-clusters = "paravance"
+clusters = "parasilo"
 
 site = "rennes"
 
