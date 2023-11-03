@@ -13,7 +13,7 @@ import time
 
 name = "sdfcp-management-1"
 
-clusters = "parasilo"
+clusters = "gros"
 
 site = "nancy"
 
@@ -21,7 +21,7 @@ site = "nancy"
 
 master_nodes = []
 
-duration = "12:00:00"
+duration = "11:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
