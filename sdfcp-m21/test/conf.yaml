@@ -28,11 +28,12 @@ etcd:
   local:
     dataDir: /var/lib/etcd
     extraArgs:
-      quota-backend-bytes: '8589934592'
+      quota-backend-bytes: 8589934592
 imageRepository: registry.k8s.io
 kind: ClusterConfiguration
-kubernetesVersion: 1.27.0
+kubernetesVersion: 1.27.3
 networking:
   dnsDomain: cluster.local
   serviceSubnet: 10.96.0.0/12
+  podSubnet: 10.244.0.0/16
 scheduler: {}
