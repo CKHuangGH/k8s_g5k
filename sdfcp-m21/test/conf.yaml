@@ -28,7 +28,7 @@ etcd:
   local:
     dataDir: /var/lib/etcd
     extraArgs:
-      quota-backend-bytes: '8589934592'
+      quotaBackendBytes: '8589934592'
 imageRepository: registry.k8s.io
 kind: ClusterConfiguration
 kubernetesVersion: 1.27.3
