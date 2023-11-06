@@ -88,11 +88,11 @@ f.close
 
 print("Master nodes ........")
 print(master_nodes)
-time.sleep(5)
+time.sleep(10)
 subprocess.call(['/bin/bash', "/home/chuang/k8s_g5k/sdfcp-m21/test/copyyaml.sh"])
 
 # Make sure k8s is not already running
 #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
-time.sleep(40)
+time.sleep(30)
 # Deploy k8s and dependencies
 run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
