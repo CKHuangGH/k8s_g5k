@@ -74,7 +74,7 @@ for i in range(0,3):
     #run_ansible(["reset_k8s.yml"], inventory_path=inventory_file)
     time.sleep(45)
     # Deploy k8s and dependencies
-    run_ansible(["afterbuildmember.yml"], inventory_path=inventory_file)
+    run_ansible(["afterbuild.yml"], inventory_path=inventory_file)
 
 f = open("node_list", 'a')
 for i in range(0,3):
