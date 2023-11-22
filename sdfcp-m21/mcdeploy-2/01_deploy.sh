@@ -7,9 +7,9 @@ python3 ./cluster/m4.py &
 python3 ./cluster/m5.py &
 python3 ./cluster/m6.py &
 python3 ./cluster/m7.py &
-python3 ./cluster/m8.py
-# python3 ./cluster/m9.py &
-# python3 ./cluster/m10.py
+python3 ./cluster/m8.py &
+python3 ./cluster/m9.py &
+python3 ./cluster/m10.py
 # python3 ./cluster/m11.py &
 # python3 ./cluster/m12.py &
 # python3 ./cluster/m13.py &
