@@ -4,7 +4,7 @@ manage=$(awk NR==1 node_list)
 manage1=$(awk NR==2 node_list)
 manage2=$(awk NR==3 node_list)
 git clone https://github.com/CKHuangGH/exprbs.git
-#git clone https://github.com/CKHuangGH/acala.git
+git clone https://github.com/CKHuangGH/acala.git
 #git clone https://github.com/CKHuangGH/k8s_google_injection.git
 #git clone https://github.com/CKHuangGH/DASI.git
 #git clone https://github.com/CKHuangGH/acala_error.git
@@ -15,7 +15,7 @@ do
 #scp ./install.sh root@$j:/root/
 scp -r ./exprbs root@$j:/root/
 scp /home/chuang/images/nginx.tar root@$j:/root/
-#scp -r ./acala root@$j:/root/
+scp -r ./acala root@$j:/root/
 #scp -r ./k8s_google_injection root@$j:/root/
 #scp -r ./DASI root@$j:/root/
 #scp -r ./acala_error root@$j:/root/
