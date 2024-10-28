@@ -10,13 +10,13 @@ import time
 
 name = "mcdeploymaster-sdfcp-21"
 
-clusters = ["paravance"]
+clusters = ["parasilo"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
 master_nodes = []
 
-duration = "15:00:00"
+duration = "4:00:00"
 
 
 for i in range(0, len(clusters)):
