@@ -10,6 +10,7 @@ do
 scp -r /home/chuang/k8s_g5k/mck8s_vm root@$j:/root/
 scp -r /home/chuang/k8s_g5k/acala root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
+ssh -o StrictHostKeyChecking=no root@$j sudo apt-get update
 ssh -o StrictHostKeyChecking=no root@$j sudo apt-get install vim -y
 ssh -o StrictHostKeyChecking=no root@$j sudo apt install python3-pip -y
 ssh -o StrictHostKeyChecking=no root@$j sudo git clone https://github.com/CKHuangGH/acala_error.git
