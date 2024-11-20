@@ -1,6 +1,7 @@
 #!/bin/bash
 i=0
 manage=$(awk NR==1 node_list)
+third_octet=$(echo "$ip_address" | awk -F. '{print $3}')
 git clone https://github.com/CKHuangGH/mck8s_vm.git
 git clone https://github.com/CKHuangGH/acala.git
 rm -rf /home/chuang/.ssh/known_hosts
@@ -20,23 +21,13 @@ ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install kubernetes
 ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install aiohttp
 #ssh -o StrictHostKeyChecking=no root@$j mv /root/.kube/config /root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/00_forerror.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/01_combineAll.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/02_acalavalue.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/03_createmember.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/04_mck8s-2.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/05_joining_test.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/06_deployment.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/createvalue.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/01_status.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/02_run.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/03_getdocker.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/mck8s_vm/results/04_cptorennes.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/acala/management/build.sh
-ssh -o StrictHostKeyChecking=no root@$j chmod 777 /root/acala/member/build.sh
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 -r /root/mck8s_vm
+ssh -o StrictHostKeyChecking=no root@$j chmod 777 -r /root/acala/
+if 
 i=$((i+1))
 done
-scp /home/chuang/.ssh/id_rsa root@10.158.0.3:/root/.ssh
-scp -r /home/chuang/k8s_g5k/mck8s_vm root@10.158.0.3:/root/
+
+scp /home/chuang/.ssh/id_rsa root@10.158.$third_octet.3:/root/.ssh
+scp -r /home/chuang/k8s_g5k/mck8s_vm root@10.158.$third_octet.3:/root/
 scp node_list root@$manage:/root/mck8s_vm/node_list
 echo "management node is $manage"
