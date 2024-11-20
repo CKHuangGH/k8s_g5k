@@ -13,7 +13,7 @@ import time
 
 name = "m24-2"
 
-clusters = "paravance"
+clusters = "parasilo"
 
 site = "rennes"
 

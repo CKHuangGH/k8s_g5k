@@ -8,7 +8,7 @@ import time
 
 name = "master-2"
 
-clusters = ["paravance"]
+clusters = ["parasilo"]
 
 #logging.basicConfig(level=logging.DEBUG)
 
