@@ -17,11 +17,12 @@ scp -r ./acala_error root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh
 #ssh -o StrictHostKeyChecking=no root@$j chmod 777 ./install.sh
 #ssh -o StrictHostKeyChecking=no root@$j sh ./install.sh &
-# ssh -o StrictHostKeyChecking=no root@$j sudo apt-get install vim -y
-#ssh -o StrictHostKeyChecking=no root@$j sudo apt install python3-pip -y
-# ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install pandas
-#ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install kubernetes
-# ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install aiohttp
+ssh -o StrictHostKeyChecking=no root@$j sudo apt update
+ssh -o StrictHostKeyChecking=no root@$j sudo apt-get install vim -y
+ssh -o StrictHostKeyChecking=no root@$j sudo apt install python3-pip -y
+ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install pandas
+ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install kubernetes
+ssh -o StrictHostKeyChecking=no root@$j sudo pip3 install aiohttp
 # #ssh -o StrictHostKeyChecking=no root@$j mv /root/.kube/config /root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j scp -o StrictHostKeyChecking=no /root/.kube/config root@$manage:/root/.kube/cluster$i
 ssh -o StrictHostKeyChecking=no root@$j chmod 777 -R /root/mck8s_vm/
