@@ -51,4 +51,5 @@ done < node_list
 scp /home/chuang/.ssh/id_rsa root@10.$ip1.$ip2.3:/root/.ssh
 scp -r ./mck8s_vm root@10.$ip1.$ip2.3:/root/
 scp node_list root@$manage:/root/mck8s_vm/large-scale/node_list
+scp node_list root@$manage:/root/mck8s_vm/node_list
 echo "management node is $manage"
