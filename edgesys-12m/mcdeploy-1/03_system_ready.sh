@@ -19,7 +19,7 @@ scp /home/chuang/images/nginx.tar root@$j:/root/ &
 #scp -r ./acala_error root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh &
 done
-sleep 60
+sleep 10
 
 for j in $(cat node_list)
 do
