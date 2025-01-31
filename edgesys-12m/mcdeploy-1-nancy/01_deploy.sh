@@ -23,7 +23,7 @@ python3 ./cluster/m2.py
 # python3 ./cluster/m50.py
 
 echo "wait for 180 secs"
-sleep 600
+sleep 60
 
 chmod 777 02_check.sh
 chmod 777 03_system_ready.sh
