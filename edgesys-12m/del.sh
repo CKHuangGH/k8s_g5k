@@ -1,4 +1,4 @@
-folders=("/home/chuang/k8s_g5k/sdfcp-12m/mcdeploy-1" "/home/chuang/k8s_g5k/sdfcp-12m/mcdeploy-2")
+folders=("/home/chuang/k8s_g5k/edgesys-12m/mcdeploy-1-nancy" "/home/chuang/k8s_g5k/edgesys-12m/mcdeploy-1-nancy")
 
 for folder in "${folders[@]}"; do
     cd "$folder" || exit 1 
