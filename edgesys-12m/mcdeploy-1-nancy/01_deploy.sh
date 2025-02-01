@@ -1,7 +1,7 @@
 python3 ./cluster/management.py
 sleep 60
-python3 ./cluster/m1.py &
-python3 ./cluster/m2.py
+python3 ./cluster/m1.py
+#python3 ./cluster/m2.py
 # python3 ./cluster/m3.py &
 # python3 ./cluster/m4.py &
 # python3 ./cluster/m5.py &
