@@ -32,5 +32,6 @@ done
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
 scp node_list root@$manage:/root/exprbs/kubernetes/node_list
 scp node_list root@$manage:/root/exprbs/edgesys/ocm/node_list
-scp node_list root@$manage:/root/exprbs/edgesys/karmada/node_list
+scp node_list root@$manage:/root/exprbs/edgesys/karmada-pull/node_list
+scp node_list root@$manage:/root/exprbs/edgesys/karmada-push/node_list
 echo "management node is $manage"

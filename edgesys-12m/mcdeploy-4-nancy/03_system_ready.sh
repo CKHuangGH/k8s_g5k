@@ -19,7 +19,7 @@ scp /home/chuang/images/nginx.tar root@$j:/root/ &
 #scp -r ./acala_error root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh &
 done
-sleep 60
+sleep 10
 
 for j in $(cat node_list)
 do
@@ -32,5 +32,6 @@ done
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 chmod 777 -R /root/exprbs/
 scp node_list root@$manage:/root/exprbs/kubernetes/node_list
 scp node_list root@$manage:/root/exprbs/edgesys/ocm/node_list
-scp node_list root@$manage:/root/exprbs/edgesys/karmada/node_list
+scp node_list root@$manage:/root/exprbs/edgesys/karmada-pull/node_list
+scp node_list root@$manage:/root/exprbs/edgesys/karmada-push/node_list
 echo "management node is $manage"
