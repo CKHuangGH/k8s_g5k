@@ -13,9 +13,9 @@ import time
 
 name = "m1-sdfcp-36"
 
-clusters = "paravance"
+clusters = "gros"
 
-site = "rennes"
+site = "nancy"
 
 #en.init_logging(logging.INFO)
 
