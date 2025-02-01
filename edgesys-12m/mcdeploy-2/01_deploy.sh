@@ -26,7 +26,7 @@ chmod 777 03_system_ready.sh
 chmod 777 04_del.sh
 
 echo "wait for 300 secs"
-for (( i=900; i>0; i-- )); do
+for (( i=600; i>0; i-- )); do
     echo "$i secs..."
     sleep 1
 done
