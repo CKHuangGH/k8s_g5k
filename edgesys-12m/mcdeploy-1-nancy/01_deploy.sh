@@ -30,4 +30,5 @@ echo "wait for 60 secs"
 for (( i=60; i>0; i-- )); do
     echo "$i secs..."
     sleep 1
+done
 . ./03_system_ready.sh
