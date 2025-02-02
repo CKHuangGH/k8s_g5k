@@ -13,9 +13,9 @@ import time
 
 name = "m1-sdfcp-2"
 
-clusters = "gros"
+clusters = "ecotype"
 
-site = "nancy"
+site = "rennes"
 
 #en.init_logging(logging.INFO)
 

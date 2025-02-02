@@ -3,7 +3,7 @@ sleep 30
 python3 m1.py
 
 echo "wait for 30 secs"
-sleep 30
+sleep 50
 
 chmod 777 02_check.sh
 chmod 777 03_system_ready.sh

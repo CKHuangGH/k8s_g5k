@@ -13,15 +13,15 @@ import time
 
 name = "m1-sdfcp-2"
 
-clusters = "gros"
+clusters = "ecotype"
 
-site = "nancy"
+site = "rennes"
 
 #en.init_logging(logging.INFO)
 
 master_nodes = []
 
-duration = "15:00:00"
+duration = "8:00:00"
 
 prod_network = en.G5kNetworkConf(type="prod", roles=["my_network"], site=site)
 
