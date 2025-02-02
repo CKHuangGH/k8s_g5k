@@ -15,7 +15,7 @@ name = "m1-sdfcp-23"
 
 clusters = "ecotype"
 
-site = "rennes"
+site = "nantes"
 
 #en.init_logging(logging.INFO)
 
