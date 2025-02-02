@@ -13,13 +13,14 @@ do
 #scp ./install.sh root@$j:/root/
 scp -r ./exprbs root@$j:/root/ &
 scp /home/chuang/images/nginx.tar root@$j:/root/ &
+scp /home/chuang/kubectl-karmada root@$j:/usr/local/bin/kubectl-karmada &
 #scp -r ./acala root@$j:/root/
 #scp -r ./k8s_google_injection root@$j:/root/
 #scp -r ./DASI root@$j:/root/
 #scp -r ./acala_error root@$j:/root/
 scp /home/chuang/.ssh/id_rsa root@$j:/root/.ssh &
 done
-sleep 180
+sleep 200
 
 for j in $(cat node_list)
 do
